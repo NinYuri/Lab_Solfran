@@ -30,6 +30,7 @@ public class Login extends javax.swing.JFrame
         pnlRegistro.setVisible(false);
         lblSee.setVisible(false);
         lblSeeI.setVisible(false);
+        lblPSReg.setVisible(false);
     }
     
     private String Generar()
@@ -99,6 +100,8 @@ public class Login extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblSolfran = new javax.swing.JLabel();
+        lblPSIni = new javax.swing.JLabel();
         pnlIniSes = new RoundedPanel(50);
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -110,6 +113,7 @@ public class Login extends javax.swing.JFrame
         lblIniSes = new javax.swing.JLabel();
         lblRegistrar = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        lblPSReg = new javax.swing.JLabel();
         pnlRegistro = new RoundedPanel(50);
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -124,18 +128,30 @@ public class Login extends javax.swing.JFrame
         txtContrasena = new javax.swing.JPasswordField();
         lblCrearC = new javax.swing.JLabel();
         lblGenerar = new javax.swing.JLabel();
+        lblPSIni3 = new javax.swing.JLabel();
+        lblPSIni4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblSolfran.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
+        lblSolfran.setForeground(new java.awt.Color(161, 29, 152));
+        lblSolfran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
+        getContentPane().add(lblSolfran, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 30, -1, -1));
+
+        lblPSIni.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
+        lblPSIni.setForeground(new java.awt.Color(161, 29, 152));
+        lblPSIni.setText("PHARMASYNC");
+        getContentPane().add(lblPSIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, -1, -1));
 
         pnlIniSes.setBackground(new java.awt.Color(72, 149, 239, 40));
         pnlIniSes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Usuario.png"))); // NOI18N
-        pnlIniSes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+        pnlIniSes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Usuario.png"))); // NOI18N
-        pnlIniSes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 70, -1, -1));
+        pnlIniSes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 80, -1, -1));
 
         lblSeeI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/blind.png"))); // NOI18N
         lblSeeI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -158,7 +174,7 @@ public class Login extends javax.swing.JFrame
         txtNombreI.setBackground(new java.awt.Color(20, 89, 169, 130));
         txtNombreI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         txtNombreI.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombreI.setText(" Nombre de usuario");
+        txtNombreI.setText(" Nombre");
         txtNombreI.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtNombreI.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -168,12 +184,12 @@ public class Login extends javax.swing.JFrame
                 txtNombreIFocusLost(evt);
             }
         });
-        pnlIniSes.add(txtNombreI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 265, 45));
+        pnlIniSes.add(txtNombreI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 265, 45));
 
         txtApellidoI.setBackground(new java.awt.Color(20, 89, 169, 130));
         txtApellidoI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         txtApellidoI.setForeground(new java.awt.Color(255, 255, 255));
-        txtApellidoI.setText(" Apellido de usuario");
+        txtApellidoI.setText(" Apellido");
         txtApellidoI.setToolTipText("");
         txtApellidoI.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtApellidoI.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -184,7 +200,7 @@ public class Login extends javax.swing.JFrame
                 txtApellidoIFocusLost(evt);
             }
         });
-        pnlIniSes.add(txtApellidoI, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 60, 265, 45));
+        pnlIniSes.add(txtApellidoI, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 70, 265, 45));
 
         txtContrasenaI.setBackground(new java.awt.Color(20, 89, 169, 130));
         txtContrasenaI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
@@ -232,6 +248,11 @@ public class Login extends javax.swing.JFrame
         pnlIniSes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 315, -1, 30));
 
         getContentPane().add(pnlIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 580, 380));
+
+        lblPSReg.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
+        lblPSReg.setForeground(new java.awt.Color(161, 29, 152));
+        lblPSReg.setText("PHARMASYNC");
+        getContentPane().add(lblPSReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, -1, -1));
 
         pnlRegistro.setBackground(new java.awt.Color(72, 149, 239, 40));
         pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -366,7 +387,17 @@ public class Login extends javax.swing.JFrame
         });
         pnlRegistro.add(lblGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 395, -1, 30));
 
-        getContentPane().add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 255, 580, 550));
+        getContentPane().add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 580, 550));
+
+        lblPSIni3.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
+        lblPSIni3.setForeground(new java.awt.Color(161, 29, 152));
+        lblPSIni3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo.png"))); // NOI18N
+        getContentPane().add(lblPSIni3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
+
+        lblPSIni4.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
+        lblPSIni4.setForeground(new java.awt.Color(161, 29, 152));
+        lblPSIni4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo_1.png"))); // NOI18N
+        getContentPane().add(lblPSIni4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 340, 580, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -500,13 +531,13 @@ public class Login extends javax.swing.JFrame
     }//GEN-LAST:event_lblBlindIMouseClicked
 
     private void txtNombreIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreIFocusGained
-        if(txtNombreI.getText().equals(" Nombre de usuario"))
+        if(txtNombreI.getText().equals(" Nombre"))
             txtNombreI.setText("");
     }//GEN-LAST:event_txtNombreIFocusGained
 
     private void txtNombreIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreIFocusLost
         if(txtNombreI.getText().isEmpty())
-            txtNombreI.setText(" Nombre de usuario");
+            txtNombreI.setText(" Nombre");
     }//GEN-LAST:event_txtNombreIFocusLost
 
     private void txtContrasenaIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaIFocusGained
@@ -520,8 +551,8 @@ public class Login extends javax.swing.JFrame
     }//GEN-LAST:event_txtContrasenaIFocusLost
 
     private void lblIniSesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIniSesMouseClicked
-        if(!txtNombreI.getText().isEmpty() && !txtNombreI.getText().equals(" Nombre de usuario"))
-            if(!txtApellidoI.getText().isEmpty() && !txtApellidoI.getText().equals(" Apellido de usuario"))
+        if(!txtNombreI.getText().isEmpty() && !txtNombreI.getText().equals(" Nombre"))
+            if(!txtApellidoI.getText().isEmpty() && !txtApellidoI.getText().equals(" Apellido"))
                 if(CONTROL.Existe(txtNombreI.getText(), txtApellidoI.getText()))
                     if(!String.valueOf(txtContrasenaI.getPassword()).isEmpty()  && !String.valueOf(txtContrasenaI.getPassword()).equals(" Contraseña"))
                         if(CONTROL.Comparar(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())))
@@ -546,17 +577,19 @@ public class Login extends javax.swing.JFrame
 
     private void lblRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarMouseClicked
         pnlIniSes.setVisible(false);
+        lblPSIni.setVisible(false);
         pnlRegistro.setVisible(true);
+        lblPSReg.setVisible(true);
     }//GEN-LAST:event_lblRegistrarMouseClicked
 
     private void txtApellidoIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoIFocusGained
-        if(txtApellidoI.getText().equals(" Apellido de usuario"))
+        if(txtApellidoI.getText().equals(" Apellido"))
             txtApellidoI.setText("");
     }//GEN-LAST:event_txtApellidoIFocusGained
 
     private void txtApellidoIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoIFocusLost
         if(txtApellidoI.getText().isEmpty())
-            txtApellidoI.setText(" Apellido de usuario");
+            txtApellidoI.setText(" Apellido");
     }//GEN-LAST:event_txtApellidoIFocusLost
 
     /**
@@ -743,9 +776,14 @@ public class Login extends javax.swing.JFrame
     private javax.swing.JLabel lblCrearC;
     private javax.swing.JLabel lblGenerar;
     private javax.swing.JLabel lblIniSes;
+    private javax.swing.JLabel lblPSIni;
+    private javax.swing.JLabel lblPSIni3;
+    private javax.swing.JLabel lblPSIni4;
+    private javax.swing.JLabel lblPSReg;
     private javax.swing.JLabel lblRegistrar;
     private javax.swing.JLabel lblSee;
     private javax.swing.JLabel lblSeeI;
+    private javax.swing.JLabel lblSolfran;
     private javax.swing.JPanel pnlIniSes;
     private javax.swing.JPanel pnlRegistro;
     private javax.swing.JTextField txtApellido;
