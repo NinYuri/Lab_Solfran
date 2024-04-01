@@ -27,7 +27,9 @@ public class Login extends javax.swing.JFrame
         setResizable(false);
         
         CONTROL = new usuariosControl();
+        pnlRegistro.setVisible(false);
         lblSee.setVisible(false);
+        lblSeeI.setVisible(false);
     }
     
     private String Generar()
@@ -97,6 +99,17 @@ public class Login extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlIniSes = new RoundedPanel(50);
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lblSeeI = new javax.swing.JLabel();
+        lblBlindI = new javax.swing.JLabel();
+        txtNombreI = new javax.swing.JTextField();
+        txtApellidoI = new javax.swing.JTextField();
+        txtContrasenaI = new javax.swing.JPasswordField();
+        lblIniSes = new javax.swing.JLabel();
+        lblRegistrar = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         pnlRegistro = new RoundedPanel(50);
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -114,6 +127,111 @@ public class Login extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlIniSes.setBackground(new java.awt.Color(72, 149, 239, 40));
+        pnlIniSes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Usuario.png"))); // NOI18N
+        pnlIniSes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Usuario.png"))); // NOI18N
+        pnlIniSes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 70, -1, -1));
+
+        lblSeeI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/blind.png"))); // NOI18N
+        lblSeeI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblSeeI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSeeIMouseClicked(evt);
+            }
+        });
+        pnlIniSes.add(lblSeeI, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 162, -1, -1));
+
+        lblBlindI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/see.png"))); // NOI18N
+        lblBlindI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBlindI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBlindIMouseClicked(evt);
+            }
+        });
+        pnlIniSes.add(lblBlindI, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 162, -1, -1));
+
+        txtNombreI.setBackground(new java.awt.Color(20, 89, 169, 130));
+        txtNombreI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtNombreI.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombreI.setText(" Nombre de usuario");
+        txtNombreI.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtNombreI.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreIFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreIFocusLost(evt);
+            }
+        });
+        pnlIniSes.add(txtNombreI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 265, 45));
+
+        txtApellidoI.setBackground(new java.awt.Color(20, 89, 169, 130));
+        txtApellidoI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtApellidoI.setForeground(new java.awt.Color(255, 255, 255));
+        txtApellidoI.setText(" Apellido de usuario");
+        txtApellidoI.setToolTipText("");
+        txtApellidoI.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtApellidoI.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtApellidoIFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidoIFocusLost(evt);
+            }
+        });
+        pnlIniSes.add(txtApellidoI, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 60, 265, 45));
+
+        txtContrasenaI.setBackground(new java.awt.Color(20, 89, 169, 130));
+        txtContrasenaI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtContrasenaI.setForeground(new java.awt.Color(255, 255, 255));
+        txtContrasenaI.setText(" Contraseña");
+        txtContrasenaI.setToolTipText("");
+        txtContrasenaI.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtContrasenaI.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContrasenaIFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtContrasenaIFocusLost(evt);
+            }
+        });
+        pnlIniSes.add(txtContrasenaI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 540, 45));
+
+        lblIniSes.setBackground(new java.awt.Color(20, 89, 169));
+        lblIniSes.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblIniSes.setForeground(new java.awt.Color(255, 255, 255));
+        lblIniSes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIniSes.setText("Iniciar Sesión");
+        lblIniSes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblIniSes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIniSes.setOpaque(true);
+        lblIniSes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIniSesMouseClicked(evt);
+            }
+        });
+        pnlIniSes.add(lblIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 430, 55));
+
+        lblRegistrar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lblRegistrar.setText("Regístrate");
+        lblRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegistrarMouseClicked(evt);
+            }
+        });
+        pnlIniSes.add(lblRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 315, -1, 30));
+
+        jLabel9.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel9.setText("¿No tienes cuenta?");
+        pnlIniSes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 315, -1, 30));
+
+        getContentPane().add(pnlIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 580, 380));
 
         pnlRegistro.setBackground(new java.awt.Color(72, 149, 239, 40));
         pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -151,7 +269,7 @@ public class Login extends javax.swing.JFrame
         txtNombre.setBackground(new java.awt.Color(20, 89, 169, 130));
         txtNombre.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Nombre de usuario");
+        txtNombre.setText(" Nombre de usuario");
         txtNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -166,7 +284,7 @@ public class Login extends javax.swing.JFrame
         txtApellido.setBackground(new java.awt.Color(20, 89, 169, 130));
         txtApellido.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
-        txtApellido.setText("Apellido paterno");
+        txtApellido.setText(" Apellido paterno");
         txtApellido.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtApellido.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -181,7 +299,7 @@ public class Login extends javax.swing.JFrame
         txtCorreo.setBackground(new java.awt.Color(20, 89, 169, 130));
         txtCorreo.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
-        txtCorreo.setText("Correo electrónico");
+        txtCorreo.setText(" Correo electrónico");
         txtCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -196,7 +314,7 @@ public class Login extends javax.swing.JFrame
         txtRol.setBackground(new java.awt.Color(20, 89, 169, 130));
         txtRol.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         txtRol.setForeground(new java.awt.Color(255, 255, 255));
-        txtRol.setText("Rol de usuario");
+        txtRol.setText(" Rol de usuario");
         txtRol.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtRol.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -211,7 +329,7 @@ public class Login extends javax.swing.JFrame
         txtContrasena.setBackground(new java.awt.Color(20, 89, 169, 130));
         txtContrasena.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(255, 255, 255));
-        txtContrasena.setText("Contraseña");
+        txtContrasena.setText(" Contraseña");
         txtContrasena.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtContrasena.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -256,37 +374,37 @@ public class Login extends javax.swing.JFrame
     private void lblCrearCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearCMouseClicked
     String resp;    
         
-        if(!txtNombre.getText().isEmpty() && !txtNombre.getText().equals("Nombre de usuario"))
+        if(!txtNombre.getText().isEmpty() && !txtNombre.getText().equals(" Nombre de usuario"))
             if(!valTexto(txtNombre.getText()))
                 OptionPane.showMessage("Registro en el Sistema", "El nombre de usuario no puede contener números", "/img/iconos/Close.png");
             else
-                if(!txtApellido.getText().isEmpty() && !txtApellido.getText().equals("Apellido paterno"))
+                if(!txtApellido.getText().isEmpty() && !txtApellido.getText().equals(" Apellido paterno"))
                     if(!valTexto(txtApellido.getText()))
                         OptionPane.showMessage("Registro en el Sistema", "El apellido del usuario no puede contener números", "/img/iconos/Close.png");
                     else
                         if(CONTROL.Existe(txtNombre.getText(), txtApellido.getText()))
                             OptionPane.showMessage("Registro en el Sistema", "El usuario " + txtNombre.getText() + " " + txtApellido.getText() + " ya se encuentra registrado", "/img/iconos/Close.png");
                         else
-                            if(!txtCorreo.getText().isEmpty() && !txtCorreo.getText().equals("Correo electrónico"))
+                            if(!txtCorreo.getText().isEmpty() && !txtCorreo.getText().equals(" Correo electrónico"))
                                 if(valCorreo(txtCorreo.getText()) != null)
                                     OptionPane.showMessage("Registro en el Sistema", valCorreo(txtCorreo.getText()), "/img/iconos/Close.png");
                                 else
-                                    if(!txtRol.getText().isEmpty() && !txtRol.getText().equals("Rol de usuario"))
+                                    if(!txtRol.getText().isEmpty() && !txtRol.getText().equals(" Rol de usuario"))
                                         if(!valRol(txtRol.getText()))
                                             OptionPane.showMessage("Registro en el Sistema", "Los roles son Administrador, Laboratorista o Auditor", "/img/iconos/Close.png");
                                         else
-                                            if(!String.valueOf(txtContrasena.getPassword()).isEmpty() && !String.valueOf(txtContrasena.getPassword()).equals("Contraseña")) 
+                                            if(!String.valueOf(txtContrasena.getPassword()).isEmpty() && !String.valueOf(txtContrasena.getPassword()).equals(" Contraseña")) 
                                             {
                                                 Contrasena obc = new Contrasena(String.valueOf(txtContrasena.getPassword()));
                                                 if(obc.ValidarContrasena())
                                                 {
                                                     resp = CONTROL.Insertar(txtNombre.getText(), txtApellido.getText(), txtCorreo.getText(), String.valueOf(txtContrasena.getPassword()), txtRol.getText());
                                                     OptionPane.showMessage("Registro en el Sistema", "Usuario registrado exitosamente, por favor ingrese con su nueva cuenta", "/img/iconos/Info.png");
-                                                    txtNombre.setText("Nombre de usuario");
-                                                    txtApellido.setText("Apellido paterno de usuario");
-                                                    txtCorreo.setText("Correo electrónico");
-                                                    txtContrasena.setText("Contraseña");
-                                                    txtRol.setText("Rol");
+                                                    txtNombre.setText(" Nombre de usuario");
+                                                    txtApellido.setText(" Apellido paterno de usuario");
+                                                    txtCorreo.setText(" Correo electrónico");
+                                                    txtContrasena.setText(" Contraseña");
+                                                    txtRol.setText(" Rol");
                                                 }
                                                 else
                                                     OptionPane.showMessage("Registro en el Sistema", obc.Error(), "/img/iconos/Close.png");                                               
@@ -308,32 +426,32 @@ public class Login extends javax.swing.JFrame
     }//GEN-LAST:event_lblGenerarMouseClicked
 
     private void txtContrasenaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaFocusLost
-        if(String.valueOf(txtContrasena.getPassword()).equals(""))
-            txtContrasena.setText("Contraseña");
+        if(String.valueOf(txtContrasena.getPassword()).isEmpty())
+            txtContrasena.setText(" Contraseña");
     }//GEN-LAST:event_txtContrasenaFocusLost
 
     private void txtContrasenaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaFocusGained
-        if(String.valueOf(txtContrasena.getPassword()).equals("Contraseña"))
+        if(String.valueOf(txtContrasena.getPassword()).equals(" Contraseña"))
             txtContrasena.setText("");
     }//GEN-LAST:event_txtContrasenaFocusGained
 
     private void txtApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusLost
         if(txtApellido.getText().isEmpty())
-            txtApellido.setText("Apellido paterno");
+            txtApellido.setText(" Apellido paterno");
     }//GEN-LAST:event_txtApellidoFocusLost
 
     private void txtApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusGained
-        if(txtApellido.getText().equals("Apellido paterno"))
+        if(txtApellido.getText().equals(" Apellido paterno"))
             txtApellido.setText("");
     }//GEN-LAST:event_txtApellidoFocusGained
 
     private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
         if(txtNombre.getText().isEmpty())
-            txtNombre.setText("Nombre de usuario");
+            txtNombre.setText(" Nombre de usuario");
     }//GEN-LAST:event_txtNombreFocusLost
 
     private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
-        if(txtNombre.getText().equals("Nombre de usuario"))
+        if(txtNombre.getText().equals(" Nombre de usuario"))
             txtNombre.setText("");
     }//GEN-LAST:event_txtNombreFocusGained
 
@@ -350,24 +468,96 @@ public class Login extends javax.swing.JFrame
     }//GEN-LAST:event_lblSeeMouseClicked
 
     private void txtCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusGained
-        if(txtCorreo.getText().equals("Correo electrónico"))
+        if(txtCorreo.getText().equals(" Correo electrónico"))
             txtCorreo.setText("");
     }//GEN-LAST:event_txtCorreoFocusGained
 
     private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
-        if(txtCorreo.getText().equals(""))
-            txtCorreo.setText("Correo electrónico");
+        if(txtCorreo.getText().isEmpty())
+            txtCorreo.setText(" Correo electrónico");
     }//GEN-LAST:event_txtCorreoFocusLost
 
     private void txtRolFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRolFocusGained
-        if(txtRol.getText().equals("Rol de usuario"))
+        if(txtRol.getText().equals(" Rol de usuario"))
             txtRol.setText("");
     }//GEN-LAST:event_txtRolFocusGained
 
     private void txtRolFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRolFocusLost
-        if(txtRol.getText().equals(""))
-            txtRol.setText("Rol de usuario");
+        if(txtRol.getText().isEmpty())
+            txtRol.setText(" Rol de usuario");
     }//GEN-LAST:event_txtRolFocusLost
+
+    private void lblSeeIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSeeIMouseClicked
+        lblBlindI.setVisible(true);
+        lblSeeI.setVisible(false);
+        txtContrasenaI.setEchoChar('*');
+    }//GEN-LAST:event_lblSeeIMouseClicked
+
+    private void lblBlindIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBlindIMouseClicked
+        lblBlindI.setVisible(false);
+        lblSeeI.setVisible(true);
+        txtContrasenaI.setEchoChar((char)0);
+    }//GEN-LAST:event_lblBlindIMouseClicked
+
+    private void txtNombreIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreIFocusGained
+        if(txtNombreI.getText().equals(" Nombre de usuario"))
+            txtNombreI.setText("");
+    }//GEN-LAST:event_txtNombreIFocusGained
+
+    private void txtNombreIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreIFocusLost
+        if(txtNombreI.getText().isEmpty())
+            txtNombreI.setText(" Nombre de usuario");
+    }//GEN-LAST:event_txtNombreIFocusLost
+
+    private void txtContrasenaIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaIFocusGained
+        if(String.valueOf(txtContrasenaI.getPassword()).equals(" Contraseña"))
+            txtContrasenaI.setText("");
+    }//GEN-LAST:event_txtContrasenaIFocusGained
+
+    private void txtContrasenaIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContrasenaIFocusLost
+        if(String.valueOf(txtContrasenaI.getPassword()).isEmpty())
+            txtContrasenaI.setText(" Contraseña");
+    }//GEN-LAST:event_txtContrasenaIFocusLost
+
+    private void lblIniSesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIniSesMouseClicked
+        if(!txtNombreI.getText().isEmpty() && !txtNombreI.getText().equals(" Nombre de usuario"))
+            if(!txtApellidoI.getText().isEmpty() && !txtApellidoI.getText().equals(" Apellido de usuario"))
+                if(CONTROL.Existe(txtNombreI.getText(), txtApellidoI.getText()))
+                    if(!String.valueOf(txtContrasenaI.getPassword()).isEmpty()  && !String.valueOf(txtContrasenaI.getPassword()).equals(" Contraseña"))
+                        if(CONTROL.Comparar(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())))
+                        {
+                            /*if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Administrador"))
+                            else
+                                if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Laboratorista"))
+                                else
+                                    if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Auditor"))
+                        */}
+                        else
+                            OptionPane.showMessage("Inicio de Sesión", "Contraseña Incorrecta", "/img/iconos/Close.png");
+                    else
+                        OptionPane.showMessage("Inicio de Sesión", "Debes ingresar tu contraseña", "/img/iconos/Close.png");
+                else
+                    OptionPane.showMessage("Inicio de Sesión", "El usuario " + txtNombreI.getText() + " " + txtApellidoI.getText() + " no se encuentra registrado en el sistema", "/img/iconos/Close.png");
+            else
+                OptionPane.showMessage("Inicio de Sesión", "Debes ingresar un apellido", "/img/iconos/Close.png");
+        else
+            OptionPane.showMessage("Inicio de Sesión", "Debes ingresar un nombre de usuario", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblIniSesMouseClicked
+
+    private void lblRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarMouseClicked
+        pnlIniSes.setVisible(false);
+        pnlRegistro.setVisible(true);
+    }//GEN-LAST:event_lblRegistrarMouseClicked
+
+    private void txtApellidoIFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoIFocusGained
+        if(txtApellidoI.getText().equals(" Apellido de usuario"))
+            txtApellidoI.setText("");
+    }//GEN-LAST:event_txtApellidoIFocusGained
+
+    private void txtApellidoIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoIFocusLost
+        if(txtApellidoI.getText().isEmpty())
+            txtApellidoI.setText(" Apellido de usuario");
+    }//GEN-LAST:event_txtApellidoIFocusLost
 
     /**
      * @param args the command line arguments
@@ -541,19 +731,30 @@ public class Login extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblBlind;
+    private javax.swing.JLabel lblBlindI;
     private javax.swing.JLabel lblCrearC;
     private javax.swing.JLabel lblGenerar;
+    private javax.swing.JLabel lblIniSes;
+    private javax.swing.JLabel lblRegistrar;
     private javax.swing.JLabel lblSee;
+    private javax.swing.JLabel lblSeeI;
+    private javax.swing.JPanel pnlIniSes;
     private javax.swing.JPanel pnlRegistro;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtApellidoI;
     private javax.swing.JPasswordField txtContrasena;
+    private javax.swing.JPasswordField txtContrasenaI;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreI;
     private javax.swing.JTextField txtRol;
     // End of variables declaration//GEN-END:variables
 }

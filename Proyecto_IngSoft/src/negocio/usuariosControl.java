@@ -35,4 +35,20 @@ public class usuariosControl
         else
             return false;
     }
+    
+    public boolean Comparar(String nombre, String apellido, String password)
+    {
+        if(DATOS.comparar(nombre, apellido, password))
+            return true;
+        else
+            return false;
+    }
+    
+    public String getRol(String nombre, String apellido, String password)
+    {
+        if(DATOS.existe(nombre, apellido))
+            return DATOS.rol(nombre, apellido, password);
+        else
+            return "";
+    }
 }

@@ -84,4 +84,70 @@ public class usuariosDAO implements CrudUsuarios<usuarios>
         }
         return resp;
     }
+    
+    @Override
+    public boolean comparar(String nombre, String apellido, String pass)
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "select contrasena from usuarios where nombre = ? and apellido = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setString(1, nombre);
+            ps.setString(2, apellido);
+            
+            rs = ps.executeQuery();
+            if(rs.next())
+                if(rs.getString(1).equals(pass))
+                    resp = true;
+                else
+                    resp = false;
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return resp;
+    }
+    
+    public String rol(String nombre, String apellido, String pass)
+    {
+        String rol = "";
+        String sql;
+        try
+        {
+            sql = "select rol from usuarios where nombre = ? and apellido = ? and contrasena = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setString(1, nombre);
+            ps.setString(2, apellido);
+            ps.setString(3, pass);
+            
+            rs = ps.executeQuery();
+            if(rs.next())
+                rol = rs.getString(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return rol;
+    }
 }
