@@ -48,9 +48,4 @@ public class accesos_remotos
     public void setAutorizado(boolean autorizado) {
         this.autorizado = autorizado;
     }
-
-    @Override
-    public String toString() {
-        return "accesos_remotos{" + "id_acceso=" + id_acceso + ", id_usuario=" + id_usuario + ", fecha_solicitud=" + fecha_solicitud + ", autorizado=" + autorizado + '}';
-    }
 }
