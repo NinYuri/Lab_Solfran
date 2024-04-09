@@ -120,6 +120,38 @@ public class usuariosDAO implements CrudUsuarios<usuarios>
         return resp;
     }
     
+    @Override
+    public int id(String nombre, String apellido, String pass)
+    {
+        int id = 0;
+        String sql;
+        try {
+            sql = "select id_usuario from usuarios where\n" + 
+                    "nombre = ? and apellido = ? and contrasena = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setString(1, nombre);
+            ps.setString(2, apellido);
+            ps.setString(3, pass);
+            
+            rs = ps.executeQuery();
+            if(rs.next())
+                id =  rs.getInt(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return id;
+    }
+    
     public String rol(String nombre, String apellido, String pass)
     {
         String rol = "";

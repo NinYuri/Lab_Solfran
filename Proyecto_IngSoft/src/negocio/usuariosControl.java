@@ -51,4 +51,12 @@ public class usuariosControl
         else
             return "";
     }
+    
+    public int getID(String nombre, String apellido, String password)
+    {
+        if(DATOS.existe(nombre, apellido))
+            return DATOS.id(nombre, apellido, password);
+        else
+            return 0;
+    }
 }

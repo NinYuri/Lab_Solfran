@@ -1,23 +1,29 @@
 package vista;
 
 import negocio.usuariosControl;
+import negocio.accesosControl;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javaswingdev.message.MessageDialog;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import vista.Login.Contrasena;
 
 public class Login extends javax.swing.JFrame 
 {
     MessageDialog OptionPane = new MessageDialog(this);
     private final usuariosControl CONTROL;
+    private final accesosControl CONTROLA;
 
     public Login() 
     {
@@ -27,6 +33,7 @@ public class Login extends javax.swing.JFrame
         setResizable(false);
         
         CONTROL = new usuariosControl();
+        CONTROLA = new accesosControl();
         pnlRegistro.setVisible(false);
         lblSee.setVisible(false);
         lblSeeI.setVisible(false);
@@ -551,12 +558,35 @@ public class Login extends javax.swing.JFrame
     }//GEN-LAST:event_txtContrasenaIFocusLost
 
     private void lblIniSesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIniSesMouseClicked
+    String resp;  
+    Date actual = new Date();
+    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String fecha = formato.format(actual);
+        
         if(!txtNombreI.getText().isEmpty() && !txtNombreI.getText().equals(" Nombre"))
             if(!txtApellidoI.getText().isEmpty() && !txtApellidoI.getText().equals(" Apellido"))
                 if(CONTROL.Existe(txtNombreI.getText(), txtApellidoI.getText()))
                     if(!String.valueOf(txtContrasenaI.getPassword()).isEmpty()  && !String.valueOf(txtContrasenaI.getPassword()).equals(" Contraseña"))
                         if(CONTROL.Comparar(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())))
                         {
+                            resp = CONTROLA.Insertar(CONTROL.getID(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())), fecha, true);
+                            
+                            new SwingWorker<Void, Void>() {
+                                @Override
+                                protected Void doInBackground() throws Exception {
+                                    OptionPane.showMessage("Registro en el Sistema", "Por favor espere a que el administrador conceda acceso...", "/img/iconos/Load.png");
+                                    Thread.sleep(3000);
+                                    return null;
+                                }
+
+                                @Override
+                                protected void done() {
+                                    SwingUtilities.invokeLater(() -> {
+                                        OptionPane.showMessage("Registro en el Sistema", "Usuario admitido\n" + "Bienvenido(a) " + txtNombreI.getText(), "/img/iconos/Info.png");
+                                    });
+                                }
+                            }.execute();
+                            
                             /*if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Administrador"))
                             else
                                 if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Laboratorista"))
