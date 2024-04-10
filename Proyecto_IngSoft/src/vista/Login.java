@@ -583,16 +583,16 @@ public class Login extends javax.swing.JFrame
                                 protected void done() {
                                     SwingUtilities.invokeLater(() -> {
                                         OptionPane.showMessage("Registro en el Sistema", "Usuario admitido\n" + "Bienvenido(a) " + txtNombreI.getText(), "/img/iconos/Info.png");
+                                        
+                                        if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Administrador"))
+                                        //else
+                                            if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Laboratorista"))
+                                            //else
+                                                if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Auditor"));
                                     });
                                 }
-                            }.execute();
-                            
-                            /*if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Administrador"))
-                            else
-                                if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Laboratorista"))
-                                else
-                                    if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Auditor"))
-                        */}
+                            }.execute();                                                       
+                        }
                         else
                             OptionPane.showMessage("Inicio de Sesión", "Contraseña Incorrecta", "/img/iconos/Close.png");
                     else
