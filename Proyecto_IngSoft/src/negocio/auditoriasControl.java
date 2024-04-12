@@ -14,11 +14,14 @@ public class auditoriasControl
         obj = new auditorias();
     }
     
-    public String Insertar(int idUsuario, String fecha, String datos)
+    public String Insertar(int idUsuario, String fecha, String hallazgos, int conformidad, String acciones, String informe)
     {
         obj.setId_usuario(idUsuario);
         obj.setFecha_auditoria(fecha);
-        obj.setDatos_consultados(datos);
+        obj.setHallazgos(hallazgos);
+        obj.setPorcentaje_conformidad(conformidad);
+        obj.setAcciones_correctivas(acciones);
+        obj.setInforme(informe);
         
         if(DATOS.insertar(obj))
             return "OK";

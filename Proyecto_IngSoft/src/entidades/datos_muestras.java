@@ -5,12 +5,18 @@ public class datos_muestras
     private int id_muestra;
     private int id_usuario;
     private String fecha_ingreso;
+    private boolean componente_extraño;
+    private boolean contaminacion_cruzada;
+    private float mg;
     private String datos;
 
-    public datos_muestras(int id_muestra, int id_usuario, String fecha_ingreso, String datos) {
+    public datos_muestras(int id_muestra, int id_usuario, String fecha_ingreso, boolean componente_extraño, boolean contaminacion_cruzada, float mg, String datos) {
         this.id_muestra = id_muestra;
         this.id_usuario = id_usuario;
         this.fecha_ingreso = fecha_ingreso;
+        this.componente_extraño = componente_extraño;
+        this.contaminacion_cruzada = contaminacion_cruzada;
+        this.mg = mg;
         this.datos = datos;
     }
 
@@ -39,6 +45,30 @@ public class datos_muestras
 
     public void setFecha_ingreso(String fecha_ingreso) {
         this.fecha_ingreso = fecha_ingreso;
+    }
+
+    public boolean isComponente_extraño() {
+        return componente_extraño;
+    }
+
+    public void setComponente_extraño(boolean componente_extraño) {
+        this.componente_extraño = componente_extraño;
+    }
+
+    public boolean isContaminacion_cruzada() {
+        return contaminacion_cruzada;
+    }
+
+    public void setContaminacion_cruzada(boolean contaminacion_cruzada) {
+        this.contaminacion_cruzada = contaminacion_cruzada;
+    }
+
+    public float getMg() {
+        return mg;
+    }
+
+    public void setMg(float mg) {
+        this.mg = mg;
     }
 
     public String getDatos() {

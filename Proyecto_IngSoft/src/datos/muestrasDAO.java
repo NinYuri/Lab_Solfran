@@ -27,12 +27,16 @@ public class muestrasDAO implements CrudMuestras<datos_muestras>
         resp = false;
         try
         {
-            sql = "insert into datos_muestras (id_usuario, fecha_ingreso, datos) values (?, ?, ?);";
+            sql = "insert into datos_muestras (id_usuario, fecha_ingreso, componente_extraño, contaminacion_cruzada, mg, datos) \n" +
+                    "values (?, ?, ?, ?, ?, ?);";
             ps = CON.Conectar().prepareStatement(sql);
             
             ps.setInt(1, obj.getId_usuario());
             ps.setString(2, obj.getFecha_ingreso());
-            ps.setString(3, obj.getDatos());
+            ps.setBoolean(3, obj.isComponente_extraño());
+            ps.setBoolean(4, obj.isContaminacion_cruzada());
+            ps.setFloat(5, obj.getMg());
+            ps.setString(6, obj.getDatos());
             
             if(ps.executeUpdate() > 0)
                 resp = true;

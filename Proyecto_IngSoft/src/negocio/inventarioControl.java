@@ -14,10 +14,12 @@ public class inventarioControl
         obj = new control_inventario();
     }
     
-    public String Insertar(int idUsuario, String fecha, String datos)
+    public String Insertar(int idUsuario, String fecha, String nombre, int cantidad, String datos)
     {
         obj.setId_usuario(idUsuario);
         obj.setFecha_registro(fecha);
+        obj.setNombre(nombre);
+        obj.setCantidad(cantidad);
         obj.setDatos(datos);
         
         if(DATOS.insertar(obj))

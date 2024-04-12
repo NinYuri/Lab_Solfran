@@ -27,12 +27,16 @@ public class auditoriasDAO implements CrudAuditorias<auditorias>
         resp = false;
         try
         {
-            sql= "insert into auditorias (id_usuario, fecha_auditoria, datos_consultados) values (?, ?, ?);";
+            sql= "insert into auditorias (id_usuario, fecha_auditoria, hallazgos, porcentaje_conformidad, acciones_correctivas, informe) \n" +
+                    "values (?, ?, ?, ?, ?, ?)";
             ps = CON.Conectar().prepareStatement(sql);
             
             ps.setInt(1, obj.getId_usuario());
             ps.setString(2, obj.getFecha_auditoria());
-            ps.setString(3, obj.getDatos_consultados());
+            ps.setString(3, obj.getHallazgos());
+            ps.setInt(4, obj.getPorcentaje_conformidad());
+            ps.setString(5, obj.getAcciones_correctivas());
+            ps.setString(6, obj.getInforme());
             
             if(ps.executeUpdate() > 0)
                 resp = true;

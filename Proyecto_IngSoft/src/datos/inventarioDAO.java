@@ -27,12 +27,15 @@ public class inventarioDAO implements CrudInventario<control_inventario>
         resp = false;
         try 
         {
-            sql = "insert into control_inventario (id_usuario, fecha_registro, datos) values (?, ?, ?);";
+            sql = "insert into control_inventario (id_usuario, fecha_registro, nombre, cantidad, datos)\n" +
+                    "values (?, ?, ?, ?, ?);";
             ps = CON.Conectar().prepareStatement(sql);
             
             ps.setInt(1, obj.getId_usuario());
             ps.setString(2, obj.getFecha_registro());
-            ps.setString(3, obj.getDatos());
+            ps.setString(3, obj.getNombre());
+            ps.setInt(4, obj.getCantidad());
+            ps.setString(5, obj.getDatos());
             
             if(ps.executeUpdate() > 0)
                 resp = true;

@@ -14,10 +14,13 @@ public class muestrasControl
         obj = new datos_muestras();
     }
     
-    public String Insertar(int idUsuario, String fecha, String datos)
+    public String Insertar(int idUsuario, String fecha, boolean componente, boolean cont, float mg, String datos)
     {
         obj.setId_usuario(idUsuario);
         obj.setFecha_ingreso(fecha);
+        obj.setComponente_extraño(componente);
+        obj.setContaminacion_cruzada(cont);
+        obj.setMg(mg);
         obj.setDatos(datos);
         
         if(DATOS.insertar(obj))

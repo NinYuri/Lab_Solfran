@@ -71,7 +71,7 @@ public class Login extends javax.swing.JFrame
     
     private boolean valTexto(String texto)
     {
-        String patron = "^[a-zA-Z]+$";
+        String patron = "^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+$";
         Pattern pattern = Pattern.compile(patron);
         Matcher matcher = pattern.matcher(texto);
         return matcher.matches();
@@ -438,6 +438,11 @@ public class Login extends javax.swing.JFrame
                                                 {
                                                     resp = CONTROL.Insertar(txtNombre.getText(), txtApellido.getText(), txtCorreo.getText(), String.valueOf(txtContrasena.getPassword()), txtRol.getText());
                                                     OptionPane.showMessage("Registro en el Sistema", "Usuario registrado exitosamente, por favor ingrese con su nueva cuenta", "/img/iconos/Info.png");
+                                                    pnlRegistro.setVisible(false);
+                                                    lblPSReg.setVisible(false);
+                                                    pnlIniSes.setVisible(true);
+                                                    lblPSIni.setVisible(true);
+                                                    
                                                     txtNombre.setText(" Nombre de usuario");
                                                     txtApellido.setText(" Apellido paterno de usuario");
                                                     txtCorreo.setText(" Correo electrónico");

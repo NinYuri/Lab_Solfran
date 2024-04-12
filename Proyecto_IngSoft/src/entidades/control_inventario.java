@@ -5,12 +5,16 @@ public class control_inventario
     private int id_inventario;
     private int id_usuario;
     private String fecha_registro;
+    private String nombre;
+    private int cantidad;
     private String datos;
 
-    public control_inventario(int id_inventario, int id_usuario, String fecha_registro, String datos) {
+    public control_inventario(int id_inventario, int id_usuario, String fecha_registro, String nombre, int cantidad, String datos) {
         this.id_inventario = id_inventario;
         this.id_usuario = id_usuario;
         this.fecha_registro = fecha_registro;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
         this.datos = datos;
     }
 
@@ -39,6 +43,22 @@ public class control_inventario
 
     public void setFecha_registro(String fecha_registro) {
         this.fecha_registro = fecha_registro;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getDatos() {
