@@ -46,7 +46,7 @@
     <Component class="javax.swing.JLabel" name="lblPSIni">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Consolas" size="42" style="1"/>
+          <Font name="Roboto Black" size="42" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="98" green="1d" red="a1" type="rgb"/>
@@ -55,7 +55,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="560" y="310" width="-1" height="-1"/>
+          <AbsoluteConstraints x="535" y="310" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -144,7 +144,7 @@
               <Connection code="new java.awt.Color(20, 89, 169, 130)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="19" style="1"/>
+              <Font name="Roboto Black" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -172,7 +172,7 @@
               <Connection code="new java.awt.Color(20, 89, 169, 130)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="19" style="1"/>
+              <Font name="Roboto Black" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -201,7 +201,7 @@
               <Connection code="new java.awt.Color(20, 89, 169, 130)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="19" style="1"/>
+              <Font name="Roboto Black" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -230,7 +230,7 @@
               <Connection code="new java.awt.Color(20, 89, 169)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="24" style="1"/>
+              <Font name="Roboto Black" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -259,7 +259,7 @@
         <Component class="javax.swing.JLabel" name="lblRegistrar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="14" style="1"/>
+              <Font name="Roboto Black" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Reg&#xed;strate"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -278,13 +278,13 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="14" style="1"/>
+              <Font name="Roboto Black" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#xbf;No tienes cuenta?"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="180" y="315" width="-1" height="30"/>
+              <AbsoluteConstraints x="185" y="315" width="-1" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -293,7 +293,7 @@
     <Component class="javax.swing.JLabel" name="lblPSReg">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Consolas" size="42" style="1"/>
+          <Font name="Roboto Black" size="42" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="98" green="1d" red="a1" type="rgb"/>
@@ -302,7 +302,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="560" y="250" width="-1" height="-1"/>
+          <AbsoluteConstraints x="535" y="250" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -415,7 +415,7 @@
               <Connection code="new java.awt.Color(20, 89, 169, 130)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="19" style="1"/>
+              <Font name="Roboto Black" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -443,7 +443,7 @@
               <Connection code="new java.awt.Color(20, 89, 169, 130)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="19" style="1"/>
+              <Font name="Roboto Black" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -471,7 +471,7 @@
               <Connection code="new java.awt.Color(20, 89, 169, 130)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="19" style="1"/>
+              <Font name="Roboto Black" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -499,7 +499,7 @@
               <Connection code="new java.awt.Color(20, 89, 169, 130)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="19" style="1"/>
+              <Font name="Roboto Black" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -527,7 +527,7 @@
               <Connection code="new java.awt.Color(20, 89, 169, 130)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="19" style="1"/>
+              <Font name="Roboto Black" size="19" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -555,7 +555,7 @@
               <Connection code="new java.awt.Color(20, 89, 169)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="24" style="1"/>
+              <Font name="Roboto Black" size="24" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -584,7 +584,7 @@
         <Component class="javax.swing.JLabel" name="lblGenerar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Consolas" size="14" style="1"/>
+              <Font name="Roboto Black" size="14" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Generar contrase&#xf1;a segura"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

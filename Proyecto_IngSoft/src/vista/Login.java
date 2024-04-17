@@ -146,10 +146,10 @@ public class Login extends javax.swing.JFrame
         lblSolfran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Logo.png"))); // NOI18N
         getContentPane().add(lblSolfran, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 30, -1, -1));
 
-        lblPSIni.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
+        lblPSIni.setFont(new java.awt.Font("Roboto Black", 1, 42)); // NOI18N
         lblPSIni.setForeground(new java.awt.Color(161, 29, 152));
         lblPSIni.setText("PHARMASYNC");
-        getContentPane().add(lblPSIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, -1, -1));
+        getContentPane().add(lblPSIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 310, -1, -1));
 
         pnlIniSes.setBackground(new java.awt.Color(72, 149, 239, 40));
         pnlIniSes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -179,7 +179,7 @@ public class Login extends javax.swing.JFrame
         pnlIniSes.add(lblBlindI, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 162, -1, -1));
 
         txtNombreI.setBackground(new java.awt.Color(20, 89, 169, 130));
-        txtNombreI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtNombreI.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
         txtNombreI.setForeground(new java.awt.Color(255, 255, 255));
         txtNombreI.setText(" Nombre");
         txtNombreI.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -194,7 +194,7 @@ public class Login extends javax.swing.JFrame
         pnlIniSes.add(txtNombreI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 265, 45));
 
         txtApellidoI.setBackground(new java.awt.Color(20, 89, 169, 130));
-        txtApellidoI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtApellidoI.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
         txtApellidoI.setForeground(new java.awt.Color(255, 255, 255));
         txtApellidoI.setText(" Apellido");
         txtApellidoI.setToolTipText("");
@@ -210,7 +210,7 @@ public class Login extends javax.swing.JFrame
         pnlIniSes.add(txtApellidoI, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 70, 265, 45));
 
         txtContrasenaI.setBackground(new java.awt.Color(20, 89, 169, 130));
-        txtContrasenaI.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtContrasenaI.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
         txtContrasenaI.setForeground(new java.awt.Color(255, 255, 255));
         txtContrasenaI.setText(" Contraseña");
         txtContrasenaI.setToolTipText("");
@@ -226,7 +226,7 @@ public class Login extends javax.swing.JFrame
         pnlIniSes.add(txtContrasenaI, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 540, 45));
 
         lblIniSes.setBackground(new java.awt.Color(20, 89, 169));
-        lblIniSes.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblIniSes.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         lblIniSes.setForeground(new java.awt.Color(255, 255, 255));
         lblIniSes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblIniSes.setText("Iniciar Sesión");
@@ -240,7 +240,7 @@ public class Login extends javax.swing.JFrame
         });
         pnlIniSes.add(lblIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 430, 55));
 
-        lblRegistrar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lblRegistrar.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         lblRegistrar.setText("Regístrate");
         lblRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -250,16 +250,16 @@ public class Login extends javax.swing.JFrame
         });
         pnlIniSes.add(lblRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 315, -1, 30));
 
-        jLabel9.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabel9.setText("¿No tienes cuenta?");
-        pnlIniSes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 315, -1, 30));
+        pnlIniSes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 315, -1, 30));
 
         getContentPane().add(pnlIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 580, 380));
 
-        lblPSReg.setFont(new java.awt.Font("Consolas", 1, 42)); // NOI18N
+        lblPSReg.setFont(new java.awt.Font("Roboto Black", 1, 42)); // NOI18N
         lblPSReg.setForeground(new java.awt.Color(161, 29, 152));
         lblPSReg.setText("PHARMASYNC");
-        getContentPane().add(lblPSReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, -1, -1));
+        getContentPane().add(lblPSReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 250, -1, -1));
 
         pnlRegistro.setBackground(new java.awt.Color(72, 149, 239, 40));
         pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -295,7 +295,7 @@ public class Login extends javax.swing.JFrame
         pnlRegistro.add(lblBlind, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 352, -1, -1));
 
         txtNombre.setBackground(new java.awt.Color(20, 89, 169, 130));
-        txtNombre.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.setText(" Nombre de usuario");
         txtNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -310,7 +310,7 @@ public class Login extends javax.swing.JFrame
         pnlRegistro.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 540, 45));
 
         txtApellido.setBackground(new java.awt.Color(20, 89, 169, 130));
-        txtApellido.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtApellido.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
         txtApellido.setForeground(new java.awt.Color(255, 255, 255));
         txtApellido.setText(" Apellido paterno");
         txtApellido.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -325,7 +325,7 @@ public class Login extends javax.swing.JFrame
         pnlRegistro.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 540, 45));
 
         txtCorreo.setBackground(new java.awt.Color(20, 89, 169, 130));
-        txtCorreo.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtCorreo.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
         txtCorreo.setText(" Correo electrónico");
         txtCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -340,7 +340,7 @@ public class Login extends javax.swing.JFrame
         pnlRegistro.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 540, 45));
 
         txtRol.setBackground(new java.awt.Color(20, 89, 169, 130));
-        txtRol.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtRol.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
         txtRol.setForeground(new java.awt.Color(255, 255, 255));
         txtRol.setText(" Rol de usuario");
         txtRol.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -355,7 +355,7 @@ public class Login extends javax.swing.JFrame
         pnlRegistro.add(txtRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 540, 45));
 
         txtContrasena.setBackground(new java.awt.Color(20, 89, 169, 130));
-        txtContrasena.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtContrasena.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(255, 255, 255));
         txtContrasena.setText(" Contraseña");
         txtContrasena.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -370,7 +370,7 @@ public class Login extends javax.swing.JFrame
         pnlRegistro.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 540, 45));
 
         lblCrearC.setBackground(new java.awt.Color(20, 89, 169));
-        lblCrearC.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblCrearC.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         lblCrearC.setForeground(new java.awt.Color(255, 255, 255));
         lblCrearC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCrearC.setText("Crear Cuenta");
@@ -384,7 +384,7 @@ public class Login extends javax.swing.JFrame
         });
         pnlRegistro.add(lblCrearC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 430, 55));
 
-        lblGenerar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lblGenerar.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         lblGenerar.setText("Generar contraseña segura");
         lblGenerar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblGenerar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -601,13 +601,13 @@ public class Login extends javax.swing.JFrame
                         else
                             OptionPane.showMessage("Inicio de Sesión", "Contraseña Incorrecta", "/img/iconos/Close.png");
                     else
-                        OptionPane.showMessage("Inicio de Sesión", "Debes ingresar tu contraseña", "/img/iconos/Close.png");
+                        OptionPane.showMessage("Inicio de Sesión", "Debe ingresar una contraseña", "/img/iconos/Close.png");
                 else
                     OptionPane.showMessage("Inicio de Sesión", "El usuario " + txtNombreI.getText() + " " + txtApellidoI.getText() + " no se encuentra registrado en el sistema", "/img/iconos/Close.png");
             else
-                OptionPane.showMessage("Inicio de Sesión", "Debes ingresar un apellido", "/img/iconos/Close.png");
+                OptionPane.showMessage("Inicio de Sesión", "Debe ingresar un apellido", "/img/iconos/Close.png");
         else
-            OptionPane.showMessage("Inicio de Sesión", "Debes ingresar un nombre de usuario", "/img/iconos/Close.png");
+            OptionPane.showMessage("Inicio de Sesión", "Debe ingresar un nombre de usuario", "/img/iconos/Close.png");
     }//GEN-LAST:event_lblIniSesMouseClicked
 
     private void lblRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarMouseClicked
@@ -735,7 +735,7 @@ public class Login extends javax.swing.JFrame
             for(int i = 0; i < password.length(); i++)
                 if(Character.isUpperCase(password.charAt(i)))
                     return true;
-            error = "Hace falta una Mayúscula";
+            error = "La contraseña debe tener, como mínimo, una mayúscula.";
             return false;
         }
 
@@ -744,7 +744,7 @@ public class Login extends javax.swing.JFrame
             for(int i = 0; i < password.length(); i++)
                 if(Character.isLowerCase(password.charAt(i)))
                     return true;
-            error = "Hacen falta Minúsculas";
+            error = "La contraseña debe contener letras minúsculas.";
             return false;
         }
 
@@ -760,7 +760,7 @@ public class Login extends javax.swing.JFrame
                 return true;
             else
             {
-                error = "Hace falta un Número";
+                error = "La contraseña debe tener, como mínimo, un número.";
                 return false;
             }
         }
@@ -777,7 +777,7 @@ public class Login extends javax.swing.JFrame
                 return true;
             else
             {
-                error = "Hace falta un Caracter Especial";
+                error = "La contraseña debe tener, como mínimo, un caracter especial";
                 return false;
             }
         }
