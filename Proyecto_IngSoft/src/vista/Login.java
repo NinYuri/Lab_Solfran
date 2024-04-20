@@ -229,7 +229,7 @@ public class Login extends javax.swing.JFrame
         lblIniSes.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         lblIniSes.setForeground(new java.awt.Color(255, 255, 255));
         lblIniSes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblIniSes.setText("Iniciar Sesión");
+        lblIniSes.setText("INICIAR SESIÓN");
         lblIniSes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblIniSes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblIniSes.setOpaque(true);
@@ -373,7 +373,7 @@ public class Login extends javax.swing.JFrame
         lblCrearC.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
         lblCrearC.setForeground(new java.awt.Color(255, 255, 255));
         lblCrearC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCrearC.setText("Crear Cuenta");
+        lblCrearC.setText("CREAR CUENTA");
         lblCrearC.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblCrearC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblCrearC.setOpaque(true);

@@ -6,6 +6,8 @@ import entidades.usuarios;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class usuariosDAO implements CrudUsuarios<usuarios>
@@ -18,6 +20,35 @@ public class usuariosDAO implements CrudUsuarios<usuarios>
     public usuariosDAO()
     {
         CON = Conexion.getInstancia();
+    }
+    
+    @Override
+    public List<usuarios> datos() 
+    {
+        List<usuarios> registros = new ArrayList();
+        String sql;
+        try
+        {
+            sql = "select id_usuario, nombre, apellido, correo, rol from usuarios;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            rs = ps.executeQuery();
+            while(rs.next())
+                registros.add(new usuarios(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return registros;
     }
 
     @Override
@@ -36,6 +67,40 @@ public class usuariosDAO implements CrudUsuarios<usuarios>
             ps.setString(3, obj.getCorreo());
             ps.setString(4, obj.getContrasena());
             ps.setString(5, obj.getRol());
+            
+            if(ps.executeUpdate() > 0)
+                resp = true;
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            CON.Desconectar();
+        }
+        return resp;
+    }
+    
+    @Override
+    public boolean modificar(usuarios obj)
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "update usuarios \n" +
+            "set nombre = ?, apellido = ?, correo = ?, rol = ? \n" +
+            "where id_usuario = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setString(1, obj.getNombre());
+            ps.setString(2, obj.getApellido());
+            ps.setString(3, obj.getCorreo());
+            ps.setString(4, obj.getRol());
+            ps.setInt(5, obj.getId_usuario());
             
             if(ps.executeUpdate() > 0)
                 resp = true;
@@ -181,5 +246,63 @@ public class usuariosDAO implements CrudUsuarios<usuarios>
             CON.Desconectar();
         }
         return rol;
+    }
+    
+    public String nombre(int id)
+    {
+        String nombre = "";
+        String sql;
+        try
+        {
+            sql = "select nombre from usuarios where id_usuario = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            rs = ps.executeQuery();
+            if(rs.next())
+                nombre = rs.getString(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return nombre;
+    }
+    
+    public String apellido(int id)
+    {
+        String apellido = "";
+        String sql;
+        try
+        {
+            sql = "select apellido from usuarios where id_usuario = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setInt(1, id);
+            
+            rs = ps.executeQuery();
+            if(rs.next())
+                apellido = rs.getString(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return apellido;
     }
 }
