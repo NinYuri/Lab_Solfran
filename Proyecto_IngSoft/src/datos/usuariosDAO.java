@@ -50,6 +50,36 @@ public class usuariosDAO implements CrudUsuarios<usuarios>
         }
         return registros;
     }
+    
+    public List<usuarios> datosUsu(String nombreComp)
+    {
+        List<usuarios> registros = new ArrayList();
+        String sql;
+        try
+        {
+            sql = "select id_usuario, nombre, apellido, correo, rol from usuarios where \n" +
+                    "CONCAT(nombre, ' ', apellido) LIKE ?";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setString(1, "%" + nombreComp + "%");
+            rs = ps.executeQuery();
+            while(rs.next())
+                registros.add(new usuarios(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return registros;
+    }
 
     @Override
     public boolean insertar(usuarios obj) 
@@ -119,6 +149,32 @@ public class usuariosDAO implements CrudUsuarios<usuarios>
     }
     
     @Override
+    public boolean eliminar(int id)
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "delete from usuarios where id_usuario = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            if(ps.executeUpdate() > 0)
+                resp = true;
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            CON.Desconectar();
+        }
+        return resp;
+    }
+    
+    @Override
     public boolean existe(String nombre, String apellido)
     {
         String sql;
@@ -148,6 +204,65 @@ public class usuariosDAO implements CrudUsuarios<usuarios>
             CON.Desconectar();
         }
         return resp;
+    }    
+    
+    public boolean existeConcat(String nombreComp)
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "select id_usuario from usuarios \n" +
+                "WHERE CONCAT(nombre, ' ', apellido) LIKE ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setString(1, "%" + nombreComp + "%");            
+            rs = ps.executeQuery();
+            if(rs.next())
+                resp = true;
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return resp;
+    }
+    
+    public int getIdConcat(String nombreComp)
+    {
+        int id = 0;
+        String sql;
+        try
+        {
+            sql = "select id_usuario from usuarios \n" +
+                "WHERE CONCAT(nombre, ' ', apellido) LIKE ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setString(1, "%" + nombreComp + "%");            
+            rs = ps.executeQuery();
+            if(rs.next())
+                id =  rs.getInt(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return id;
     }
     
     @Override

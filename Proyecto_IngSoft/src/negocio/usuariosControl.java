@@ -37,6 +37,25 @@ public class usuariosControl
         return modeloTabla;
     }
     
+    public DefaultTableModel Buscar(String nombreComp)
+    {
+        List<usuarios> lista = new ArrayList();
+        lista.addAll(DATOS.datosUsu(nombreComp));
+        String[] titulos = {"ID", "Nombre", "Correo", "Rol"};
+        String[] registro = new String[4];
+        modeloTabla = new DefaultTableModel(null, titulos);
+        
+        for(usuarios item:lista)
+        {
+            registro[0] = String.valueOf(item.getId_usuario());
+            registro[1] = item.getNombre() + " " + item.getApellido();
+            registro[2] = item.getCorreo();
+            registro[3] = item.getRol();
+            modeloTabla.addRow(registro);
+        }
+        return modeloTabla;
+    }
+    
     public String Insertar(String nombre, String apellido, String correo, String contrasena, String rol)
     {
         obj.setNombre(nombre);
@@ -65,9 +84,25 @@ public class usuariosControl
             return "Error en la actualización";
     }
     
+    public String Eliminar(int id)
+    {
+        if(DATOS.eliminar(id))
+            return "OK";
+        else
+            return "No fue posible eliminar el usuario";
+    }
+    
     public boolean Existe(String nombre, String apellido)
     {
         if(DATOS.existe(nombre, apellido))
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean existeConcat(String nombreComp)
+    {
+        if(DATOS.existeConcat(nombreComp))
             return true;
         else
             return false;

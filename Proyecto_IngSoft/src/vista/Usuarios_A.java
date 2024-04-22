@@ -11,7 +11,9 @@ import java.util.regex.Pattern;
 import javaswingdev.message.MessageDialog;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import negocio.accesosControl;
 import negocio.usuariosControl;
 import vista.Usuarios_A.Contrasena;
 
@@ -19,8 +21,10 @@ public class Usuarios_A extends javax.swing.JFrame
 {
     MessageDialog OptionPane = new MessageDialog(this);
     private final usuariosControl CONTROL;
+    private final accesosControl CONTROLACCESS;
     Font subT = new Font("Roboto", Font.PLAIN, 20);
     Font opc = new Font("Roboto", Font.BOLD, 20);
+    Font prinOpc = new Font("Roboto", Font.PLAIN, 17);
     
     int id;
     String nombre, apellido, correo, rol;
@@ -39,9 +43,20 @@ public class Usuarios_A extends javax.swing.JFrame
         revisarDatos.setVisible(false);
                 
         CONTROL = new usuariosControl();
+        CONTROLACCESS = new accesosControl();
         Listar();
+        ListarAccesos();
         
-        Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct, 20);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct1, 20);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_4, 0);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_5, 0);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/User.png")), lbl_1, 0);        
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);
+        Opc_2.setBackground(new Color(255, 255, 255));
+        AccesosRemotos.setVisible(false);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras_B.png")), lbl_3, 0);
+        Opc_3.setBackground(new Color(255, 255, 255));
     }
     
     public void Listar()
@@ -49,12 +64,22 @@ public class Usuarios_A extends javax.swing.JFrame
         tblUsuarios.setModel(CONTROL.Listar());
     }
     
+    public void ListarAccesos()
+    {
+        tblAccesos.setModel(CONTROLACCESS.Listar());
+    }
+    
     public void Tipografia() 
     {        
         lbl1.setFont(subT);
+        lbl9.setFont(subT);
         opc1.setFont(opc);
+        opc4.setFont(opc);
         opc2.setFont(subT);
         opc3.setFont(subT);
+        lblopc_1.setFont(opc);
+        lblopc_2.setFont(prinOpc);
+        lblopc_3.setFont(prinOpc);
     }
     
     private boolean valTexto(String texto)
@@ -95,15 +120,24 @@ public class Usuarios_A extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Opc_1 = new RoundedPanel(20);
+        lbl_1 = new javax.swing.JLabel();
+        lblopc_1 = new javax.swing.JLabel();
+        Opc_2 = new RoundedPanel(20);
+        lbl_2 = new javax.swing.JLabel();
+        lblopc_2 = new javax.swing.JLabel();
+        Opc_3 = new RoundedPanel(20);
+        lbl_3 = new javax.swing.JLabel();
+        lblopc_3 = new javax.swing.JLabel();
+        GestionUsuarios = new javax.swing.JPanel();
         lbl1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
-        pnlIniSes = new RoundedPanel(50);
         jPanel3 = new javax.swing.JPanel();
         pnlOpc1 = new javax.swing.JPanel();
-        pnlOpc2 = new javax.swing.JPanel();
-        pnlOpc3 = new javax.swing.JPanel();
         opc1 = new javax.swing.JLabel();
+        pnlOpc2 = new javax.swing.JPanel();
         opc2 = new javax.swing.JLabel();
+        pnlOpc3 = new javax.swing.JPanel();
         opc3 = new javax.swing.JLabel();
         subirDatos = new javax.swing.JPanel();
         lbl3 = new javax.swing.JLabel();
@@ -125,35 +159,93 @@ public class Usuarios_A extends javax.swing.JFrame
         lblEliminar = new javax.swing.JLabel();
         lblModificar = new javax.swing.JLabel();
         lblIconAct = new javax.swing.JLabel();
+        txtBuscar1 = new javax.swing.JTextField();
+        lbl_5 = new javax.swing.JLabel();
+        AccesosRemotos = new javax.swing.JPanel();
+        lbl8 = new javax.swing.JLabel();
+        lbl9 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        pnlOpc4 = new javax.swing.JPanel();
+        opc4 = new javax.swing.JLabel();
+        revisarDatos1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblAccesos = new rojeru_san.complementos.RSTableMetro();
+        lblEliminar1 = new javax.swing.JLabel();
+        lblIconAct1 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
+        lbl_4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Opc_1.setBackground(new java.awt.Color(161,29,152, 150));
+        Opc_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Opc_1MouseClicked(evt);
+            }
+        });
+        Opc_1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Opc_1.add(lbl_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, 30, 30));
+
+        lblopc_1.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lblopc_1.setForeground(new java.awt.Color(255, 255, 255));
+        lblopc_1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblopc_1.setText("Gestión de Usuarios");
+        lblopc_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_1.add(lblopc_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 240, -1));
+
+        getContentPane().add(Opc_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 320, 40));
+
+        Opc_2.setBackground(new java.awt.Color(161,29,152, 150));
+        Opc_2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Opc_2MouseClicked(evt);
+            }
+        });
+        Opc_2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Opc_2.add(lbl_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, 30, 30));
+
+        lblopc_2.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lblopc_2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblopc_2.setText("Accesos Remotos");
+        lblopc_2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_2.add(lblopc_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 240, -1));
+
+        getContentPane().add(Opc_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 320, 40));
+
+        Opc_3.setBackground(new java.awt.Color(161,29,152, 150));
+        Opc_3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Opc_3.add(lbl_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, 30, 30));
+
+        lblopc_3.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lblopc_3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblopc_3.setText("Gestión de Muestras");
+        lblopc_3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_3.add(lblopc_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 240, -1));
+
+        getContentPane().add(Opc_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 320, 40));
+
+        GestionUsuarios.setBackground(new java.awt.Color(255, 255, 255));
+        GestionUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lbl1.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
         lbl1.setForeground(new java.awt.Color(105, 99, 135));
         lbl1.setText("Creación, modificación y eliminación de cuentas, así como la asignación de roles y permisos.");
-        getContentPane().add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 100, 1080, -1));
+        GestionUsuarios.add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1080, -1));
 
         lbl2.setFont(new java.awt.Font("Roboto Black", 1, 42)); // NOI18N
         lbl2.setForeground(new java.awt.Color(161, 29, 152));
         lbl2.setText("Gestión de Usuarios");
-        getContentPane().add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, -1, -1));
-
-        pnlIniSes.setBackground(new java.awt.Color(181, 23, 158, 130));
-        pnlIniSes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(pnlIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 210, 130));
+        GestionUsuarios.add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(72, 149, 239));
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 900, 2));
+        GestionUsuarios.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 900, 2));
 
         pnlOpc1.setBackground(new java.awt.Color(72, 149, 239));
-        getContentPane().add(pnlOpc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 185, 130, 7));
-
-        pnlOpc2.setBackground(new java.awt.Color(72, 149, 239));
-        getContentPane().add(pnlOpc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 185, 190, 7));
-
-        pnlOpc3.setBackground(new java.awt.Color(72, 149, 239));
-        getContentPane().add(pnlOpc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 185, 200, 7));
+        GestionUsuarios.add(pnlOpc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 130, 7));
 
         opc1.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
         opc1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -164,7 +256,10 @@ public class Usuarios_A extends javax.swing.JFrame
                 opc1MouseClicked(evt);
             }
         });
-        getContentPane().add(opc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 156, 130, -1));
+        GestionUsuarios.add(opc1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 126, 130, -1));
+
+        pnlOpc2.setBackground(new java.awt.Color(72, 149, 239));
+        GestionUsuarios.add(pnlOpc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 155, 190, 7));
 
         opc2.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
         opc2.setForeground(new java.awt.Color(105, 99, 135));
@@ -176,14 +271,17 @@ public class Usuarios_A extends javax.swing.JFrame
                 opc2MouseClicked(evt);
             }
         });
-        getContentPane().add(opc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 156, 190, -1));
+        GestionUsuarios.add(opc2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 126, 190, -1));
+
+        pnlOpc3.setBackground(new java.awt.Color(72, 149, 239));
+        GestionUsuarios.add(pnlOpc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 155, 200, 7));
 
         opc3.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
         opc3.setForeground(new java.awt.Color(105, 99, 135));
         opc3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         opc3.setText("Modificar registros");
-        opc3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(opc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 156, 200, -1));
+        opc3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        GestionUsuarios.add(opc3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 126, 200, -1));
 
         subirDatos.setBackground(new java.awt.Color(255, 255, 255));
         subirDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -277,7 +375,7 @@ public class Usuarios_A extends javax.swing.JFrame
         });
         subirDatos.add(lblIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 540, 430, 55));
 
-        getContentPane().add(subirDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 830, 640));
+        GestionUsuarios.add(subirDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 830, 640));
 
         revisarDatos.setBackground(new java.awt.Color(255, 255, 255));
         revisarDatos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -349,7 +447,140 @@ public class Usuarios_A extends javax.swing.JFrame
         });
         revisarDatos.add(lblIconAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 70, 55));
 
-        getContentPane().add(revisarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 910, 640));
+        GestionUsuarios.add(revisarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 910, 640));
+
+        txtBuscar1.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtBuscar1.setText(" Buscar Usuario");
+        txtBuscar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtBuscar1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscar1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscar1FocusLost(evt);
+            }
+        });
+        GestionUsuarios.add(txtBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 123, 190, 30));
+
+        lbl_5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_5MouseClicked(evt);
+            }
+        });
+        GestionUsuarios.add(lbl_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 125, 30, 25));
+
+        getContentPane().add(GestionUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1100, 850));
+
+        AccesosRemotos.setBackground(new java.awt.Color(255, 255, 255));
+        AccesosRemotos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl8.setFont(new java.awt.Font("Roboto Black", 1, 42)); // NOI18N
+        lbl8.setForeground(new java.awt.Color(161, 29, 152));
+        lbl8.setText("Accesos Remotos");
+        AccesosRemotos.add(lbl8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        lbl9.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl9.setForeground(new java.awt.Color(105, 99, 135));
+        lbl9.setText("Controla y organiza los accesos remotos de manera segura y eficiente");
+        AccesosRemotos.add(lbl9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1080, -1));
+
+        jPanel4.setBackground(new java.awt.Color(72, 149, 239));
+        AccesosRemotos.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 900, 2));
+
+        pnlOpc4.setBackground(new java.awt.Color(72, 149, 239));
+        AccesosRemotos.add(pnlOpc4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 190, 7));
+
+        opc4.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc4.setText("Revisar Registros");
+        opc4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opc4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opc4MouseClicked(evt);
+            }
+        });
+        AccesosRemotos.add(opc4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 126, 190, -1));
+
+        revisarDatos1.setBackground(new java.awt.Color(255, 255, 255));
+        revisarDatos1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblAccesos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblAccesos.setColorBackgoundHead(new java.awt.Color(20, 89, 169));
+        tblAccesos.setColorFilasBackgound2(new java.awt.Color(72, 149, 239));
+        tblAccesos.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblAccesos.setColorFilasForeground2(new java.awt.Color(255, 255, 255));
+        tblAccesos.setFuenteFilas(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        tblAccesos.setFuenteFilasSelect(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        tblAccesos.setFuenteHead(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        tblAccesos.setRowHeight(25);
+        jScrollPane2.setViewportView(tblAccesos);
+
+        revisarDatos1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 860, 480));
+
+        lblEliminar1.setBackground(new java.awt.Color(20, 89, 169));
+        lblEliminar1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblEliminar1.setForeground(new java.awt.Color(255, 255, 255));
+        lblEliminar1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEliminar1.setText("ELIMINAR");
+        lblEliminar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblEliminar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEliminar1.setOpaque(true);
+        lblEliminar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEliminar1MouseClicked(evt);
+            }
+        });
+        revisarDatos1.add(lblEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 280, 55));
+
+        lblIconAct1.setBackground(new java.awt.Color(20, 89, 169));
+        lblIconAct1.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblIconAct1.setForeground(new java.awt.Color(255, 255, 255));
+        lblIconAct1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconAct1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblIconAct1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIconAct1.setOpaque(true);
+        lblIconAct1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIconAct1MouseClicked(evt);
+            }
+        });
+        revisarDatos1.add(lblIconAct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 70, 55));
+
+        AccesosRemotos.add(revisarDatos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 910, 640));
+
+        txtBuscar.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtBuscar.setText(" Buscar Usuario");
+        txtBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscarFocusLost(evt);
+            }
+        });
+        AccesosRemotos.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 123, 190, 30));
+
+        lbl_4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_4MouseClicked(evt);
+            }
+        });
+        AccesosRemotos.add(lbl_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 125, 30, 25));
+
+        getContentPane().add(AccesosRemotos, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1100, 850));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -398,6 +629,7 @@ public class Usuarios_A extends javax.swing.JFrame
                                                         resp = CONTROL.Insertar(txtNombre.getText(), txtApellido.getText(), txtCorreo.getText(), String.valueOf(txtContrasena.getPassword()), txtRol.getText());
                                                         OptionPane.showMessage("Registro en el Sistema", "Usuario registrado exitosamente", "/img/iconos/Info.png");                                                    
 
+                                                        Listar();
                                                         txtNombre.setText("");
                                                         txtApellido.setText("");
                                                         txtCorreo.setText("");
@@ -450,7 +682,7 @@ public class Usuarios_A extends javax.swing.JFrame
                                                 txtApellido.setText("");
                                                 txtCorreo.setText("");
                                                 txtRol.setText("");
-                                                
+                                                Listar();
                                                 opc1.setFont(subT);
                                                 opc1.setForeground(new Color(105,99,135));
                                                 opc2.setFont(opc);
@@ -509,10 +741,23 @@ public class Usuarios_A extends javax.swing.JFrame
     private void lblEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminarMouseClicked
         if(tblUsuarios.getSelectedRowCount() == 1)
         {
-            
+            id  = Integer.parseInt(String.valueOf(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 0)));
+            nombre = String.valueOf(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 1));
+            rol = String.valueOf(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 3));
+            if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar al " + rol + " " + nombre + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                String resp = CONTROL.Eliminar(id);
+                if(resp.equals("OK"))
+                {
+                    OptionPane.showMessage("Eliminar", "Usuario eliminado", "/img/iconos/Info.png");
+                    Listar();
+                }
+                else
+                    OptionPane.showMessage("Eliminar", "Hubo un error al eliminar al usuario " + nombre, "/img/iconos/Close.png");
+            }
         }
         else
-            OptionPane.showMessage("Eliminar", "Debes seleccionar un usuario de la tabla", "/img/iconos/Close.png");
+            OptionPane.showMessage("Eliminar", "Debe seleccionar un usuario de la tabla", "/img/iconos/Close.png");
     }//GEN-LAST:event_lblEliminarMouseClicked
 
     private void lblModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModificarMouseClicked
@@ -547,12 +792,128 @@ public class Usuarios_A extends javax.swing.JFrame
             txtRol.setText(rol);
         }
         else
-            OptionPane.showMessage("Modificar", "Debes seleccionar un usuario de la tabla", "/img/iconos/Close.png");
+            OptionPane.showMessage("Modificar", "Debe seleccionar un usuario de la tabla", "/img/iconos/Close.png");
     }//GEN-LAST:event_lblModificarMouseClicked
 
     private void lblIconActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconActMouseClicked
         Listar();
     }//GEN-LAST:event_lblIconActMouseClicked
+
+    private void Opc_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Opc_1MouseClicked
+        Opc_1.setBackground(new Color(161,29,152, 150));
+        lblopc_1.setFont(opc);
+        lblopc_1.setForeground(new Color(255, 255, 255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/User.png")), lbl_1, 0);
+        Opc_2.setBackground(new Color(255,255,255));
+        lblopc_2.setFont(prinOpc);
+        lblopc_2.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);
+        
+        GestionUsuarios.setVisible(true);
+        opc1.setFont(opc);
+        opc1.setForeground(new Color(0,0,0));
+        opc2.setFont(subT);
+        opc2.setForeground(new Color(105,99,135));     
+        opc3.setFont(subT);
+        opc3.setForeground(new Color(105,99,135)); 
+        pnlOpc1.setVisible(true);
+        pnlOpc2.setVisible(false); 
+        pnlOpc3.setVisible(false);
+        revisarDatos.setVisible(false);
+        subirDatos.setVisible(true);     
+        lbl7.setVisible(true);
+        lblBlind.setVisible(true);
+        txtContrasena.setVisible(true);
+        lblIniSes.setText("REGISTRAR");
+        txtBuscar1.setText(" Buscar Usuario");
+        
+        AccesosRemotos.setVisible(false);
+    }//GEN-LAST:event_Opc_1MouseClicked
+
+    private void Opc_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Opc_2MouseClicked
+        Opc_1.setBackground(new Color(255,255,255));
+        lblopc_1.setFont(prinOpc);
+        lblopc_1.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/User_B.png")), lbl_1, 0);
+        Opc_2.setBackground(new Color(161,29,152, 150));
+        lblopc_2.setFont(opc);
+        lblopc_2.setForeground(new Color(255,255,255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote.png")), lbl_2, 0);
+        
+        GestionUsuarios.setVisible(false);
+        AccesosRemotos.setVisible(true);
+        ListarAccesos();
+        txtBuscar.setText(" Buscar Usuario");
+    }//GEN-LAST:event_Opc_2MouseClicked
+
+    private void opc4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opc4MouseClicked
+
+    private void lblEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar1MouseClicked
+        if(tblAccesos.getSelectedRowCount() == 1)
+        {
+            id  = Integer.parseInt(String.valueOf(tblAccesos.getValueAt(tblAccesos.getSelectedRow(), 0)));
+            nombre = String.valueOf(tblAccesos.getValueAt(tblAccesos.getSelectedRow(), 1));
+            if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar el acceso remoto del usuario " + nombre + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                String resp = CONTROLACCESS.Eliminar(id);
+                if(resp.equals("OK"))
+                {
+                    OptionPane.showMessage("Eliminar", "Acceso eliminado", "/img/iconos/Info.png");
+                    ListarAccesos();
+                }
+                else
+                    OptionPane.showMessage("Eliminar", "Hubo un error al eliminar el acceso remoto", "/img/iconos/Close.png");
+            }
+        }
+        else
+            OptionPane.showMessage("Eliminar", "Debe seleccionar un acceso remoto de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblEliminar1MouseClicked
+
+    private void lblIconAct1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconAct1MouseClicked
+        ListarAccesos();
+    }//GEN-LAST:event_lblIconAct1MouseClicked
+
+    private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
+        if(txtBuscar.getText().equals(" Buscar Usuario"))
+            txtBuscar.setText("");
+    }//GEN-LAST:event_txtBuscarFocusGained
+
+    private void txtBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusLost
+        if(txtBuscar.getText().isEmpty())
+            txtBuscar.setText(" Buscar Usuario");
+    }//GEN-LAST:event_txtBuscarFocusLost
+
+    private void lbl_4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_4MouseClicked
+        if(!txtBuscar.getText().isEmpty() && !txtBuscar.getText().equals(" Buscar Usuario"))
+            if(CONTROL.existeConcat(txtBuscar.getText()))
+                tblAccesos.setModel(CONTROLACCESS.Buscar(txtBuscar.getText()));         
+            else
+                OptionPane.showMessage("Buscar", "El usuario " + txtBuscar1.getText() + " no existe en el sistema", "/img/iconos/Close.png");                           
+        else
+            OptionPane.showMessage("Buscar", "Debe ingresar un nombre de usuario a buscar", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lbl_4MouseClicked
+
+    private void txtBuscar1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar1FocusGained
+        if(txtBuscar1.getText().equals(" Buscar Usuario"))
+            txtBuscar1.setText("");
+    }//GEN-LAST:event_txtBuscar1FocusGained
+
+    private void txtBuscar1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar1FocusLost
+        if(txtBuscar1.getText().isEmpty())
+            txtBuscar1.setText(" Buscar Usuario");
+    }//GEN-LAST:event_txtBuscar1FocusLost
+
+    private void lbl_5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_5MouseClicked
+        if(!txtBuscar1.getText().isEmpty() && !txtBuscar1.getText().equals(" Buscar Usuario"))
+            if(CONTROL.existeConcat(txtBuscar1.getText()))              
+                tblUsuarios.setModel(CONTROL.Buscar(txtBuscar1.getText()));          
+            else
+                OptionPane.showMessage("Buscar", "El usuario " + txtBuscar1.getText() + " no existe en el sistema", "/img/iconos/Close.png");                           
+        else
+            OptionPane.showMessage("Buscar", "Debe ingresar un nombre de usuario a buscar", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lbl_5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -589,10 +950,13 @@ public class Usuarios_A extends javax.swing.JFrame
         });
     }
     
-    public void Icono(ImageIcon icono, JLabel label)
+    public void Icono(ImageIcon icono, JLabel label, int val)
     {
         Image image = icono.getImage();
-        image = image.getScaledInstance(label.getWidth() - 20, label.getHeight() - 20, Image.SCALE_SMOOTH);
+        if(val != 0)
+            image = image.getScaledInstance(label.getWidth() - val, label.getHeight() - val, Image.SCALE_SMOOTH);
+        else
+            image = image.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);            
         icono = new ImageIcon(image);
         label.setIcon(icono);
     }
@@ -734,8 +1098,15 @@ public class Usuarios_A extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AccesosRemotos;
+    private javax.swing.JPanel GestionUsuarios;
+    private javax.swing.JPanel Opc_1;
+    private javax.swing.JPanel Opc_2;
+    private javax.swing.JPanel Opc_3;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl2;
     private javax.swing.JLabel lbl3;
@@ -743,23 +1114,40 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel lbl5;
     private javax.swing.JLabel lbl6;
     private javax.swing.JLabel lbl7;
+    private javax.swing.JLabel lbl8;
+    private javax.swing.JLabel lbl9;
     private javax.swing.JLabel lblBlind;
     private javax.swing.JLabel lblEliminar;
+    private javax.swing.JLabel lblEliminar1;
     private javax.swing.JLabel lblIconAct;
+    private javax.swing.JLabel lblIconAct1;
     private javax.swing.JLabel lblIniSes;
     private javax.swing.JLabel lblModificar;
     private javax.swing.JLabel lblSee;
+    private javax.swing.JLabel lbl_1;
+    private javax.swing.JLabel lbl_2;
+    private javax.swing.JLabel lbl_3;
+    private javax.swing.JLabel lbl_4;
+    private javax.swing.JLabel lbl_5;
+    private javax.swing.JLabel lblopc_1;
+    private javax.swing.JLabel lblopc_2;
+    private javax.swing.JLabel lblopc_3;
     private javax.swing.JLabel opc1;
     private javax.swing.JLabel opc2;
     private javax.swing.JLabel opc3;
-    private javax.swing.JPanel pnlIniSes;
+    private javax.swing.JLabel opc4;
     private javax.swing.JPanel pnlOpc1;
     private javax.swing.JPanel pnlOpc2;
     private javax.swing.JPanel pnlOpc3;
+    private javax.swing.JPanel pnlOpc4;
     private javax.swing.JPanel revisarDatos;
+    private javax.swing.JPanel revisarDatos1;
     private javax.swing.JPanel subirDatos;
+    private rojeru_san.complementos.RSTableMetro tblAccesos;
     private rojeru_san.complementos.RSTableMetro tblUsuarios;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtBuscar1;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
