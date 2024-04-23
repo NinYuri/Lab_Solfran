@@ -590,7 +590,12 @@ public class Login extends javax.swing.JFrame
                                         OptionPane.showMessage("Registro en el Sistema", "Usuario admitido\n" + "Bienvenido(a) " + txtNombreI.getText(), "/img/iconos/Info.png");
                                         
                                         if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Administrador"))
-                                        //else
+                                        {
+                                            Usuarios_A frmAdmin = new Usuarios_A(txtNombreI.getText() + " " + txtApellidoI.getText());
+                                            frmAdmin.setVisible(true);
+                                            dispose();
+                                        }
+                                        else
                                             if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Laboratorista"))
                                             //else
                                                 if(CONTROL.getRol(txtNombreI.getText(), txtApellidoI.getText(), String.valueOf(txtContrasenaI.getPassword())).equals("Auditor"));

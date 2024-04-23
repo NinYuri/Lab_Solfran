@@ -132,6 +132,11 @@ public class usuariosControl
             return 0;
     }
     
+    public int getIDConcat(String nombre)
+    {
+        return DATOS.getIdConcat(nombre);
+    }
+    
     public String getNombre(int id)
     {
         return DATOS.nombre(id);
