@@ -16,7 +16,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import negocio.accesosControl;
+import negocio.inventarioControl;
+import negocio.monitoreoControl;
 import negocio.muestrasControl;
+import negocio.pruebasControl;
 import negocio.usuariosControl;
 import vista.Usuarios_A.Contrasena;
 
@@ -26,12 +29,20 @@ public class Usuarios_A extends javax.swing.JFrame
     private final usuariosControl CONTROL;
     private final accesosControl CONTROLACCESS;
     private final muestrasControl CONTROLMUESTRAS;
+    private final pruebasControl CONTROLPRUEBAS;
+    private final inventarioControl CONTROLINV;
+    private final monitoreoControl CONTROLMONI;
     Font subT = new Font("Roboto", Font.PLAIN, 20);
     Font opc = new Font("Roboto", Font.BOLD, 20);
     Font prinOpc = new Font("Roboto", Font.PLAIN, 17);
     
-    int id;
-    String nombre, apellido, correo, rol, nombreLogin;
+    Date actual = new Date();
+    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String fecha = formato.format(actual);
+    
+    int id, cantidad;
+    String nombre, apellido, correo, rol, compExt, contCru, datosM, resPrueba, nombreLogin;
+    float mg;
 
     public Usuarios_A() 
     {
@@ -44,26 +55,44 @@ public class Usuarios_A extends javax.swing.JFrame
         pnlOpc2.setVisible(false);
         pnlOpc3.setVisible(false);
         lblSee.setVisible(false);
-        revisarDatos.setVisible(false);
-        Muestras.setVisible(false);
+        revisarDatos.setVisible(false);        
                 
         CONTROL = new usuariosControl();
         CONTROLACCESS = new accesosControl();
         CONTROLMUESTRAS = new muestrasControl();
+        CONTROLPRUEBAS = new pruebasControl();
+        CONTROLINV = new inventarioControl();
+        CONTROLMONI = new monitoreoControl();
         Listar();
         
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct, 20);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct1, 20);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct2, 20);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct3, 20);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct4, 20);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct5, 20);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_4, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_5, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_6, 0);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_8, 0);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_10, 0);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_12, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/User.png")), lbl_1, 0);        
-        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);        
         Opc_2.setBackground(new Color(255, 255, 255));
         AccesosRemotos.setVisible(false);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras_B.png")), lbl_3, 0);
         Opc_3.setBackground(new Color(255, 255, 255));
+        Muestras.setVisible(false);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Calidad_B.png")), lbl_7, 0);
+        Opc_4.setBackground(new Color(255, 255, 255));
+        Pruebas.setVisible(false);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Inventory_B.png")), lbl_9, 0);
+        Opc_5.setBackground(new Color(255, 255, 255));
+        Inventario.setVisible(false);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        Opc_6.setBackground(new Color(255, 255, 255));
+        ProdDis.setVisible(false);
         
         nombreLogin = "";
     }
@@ -89,21 +118,51 @@ public class Usuarios_A extends javax.swing.JFrame
         tblMuestras.setModel(CONTROLMUESTRAS.Listar());
     }
     
+    public void ListarPruebas()
+    {
+        tblPruebas.setModel(CONTROLPRUEBAS.Listar());
+    }
+    
+    public void ListarInv()
+    {
+        tblInventario.setModel(CONTROLINV.Listar());
+    }
+    
+    public void ListarMonitoreo()
+    {
+        tblMonitoreo.setModel(CONTROLMONI.Listar());
+    }
+    
     public void Tipografia() 
     {        
         lbl1.setFont(subT);
         lbl9.setFont(subT);
         lbl10.setFont(subT);
+        lbl17.setFont(subT);
+        lbl19.setFont(subT);
+        lbl26.setFont(subT);
         opc1.setFont(opc);
         opc4.setFont(opc);
         opc5.setFont(opc);
+        opc8.setFont(opc);
+        opc11.setFont(opc);
+        opc14.setFont(opc);
         opc2.setFont(subT);
         opc3.setFont(subT);
         opc6.setFont(subT);
         opc7.setFont(subT);
+        opc9.setFont(subT);
+        opc10.setFont(subT);
+        opc12.setFont(subT);
+        opc13.setFont(subT);
+        opc15.setFont(subT);
+        opc16.setFont(subT);
         lblopc_1.setFont(opc);
         lblopc_2.setFont(prinOpc);
         lblopc_3.setFont(prinOpc);
+        lblopc_4.setFont(prinOpc);
+        lblopc_5.setFont(prinOpc);
+        lblopc_6.setFont(prinOpc);
     }
     
     private boolean valTexto(String texto)
@@ -139,6 +198,14 @@ public class Usuarios_A extends javax.swing.JFrame
         Matcher matcher = pattern.matcher(rol);
         return matcher.matches();
     }
+    
+    private boolean valResPruebas(String res)
+    {
+        String patron = "^(Aceptada|Rechazada|En proceso)$";
+        Pattern pattern = Pattern.compile(patron);
+        Matcher matcher = pattern.matcher(res);
+        return matcher.matches();
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -153,6 +220,15 @@ public class Usuarios_A extends javax.swing.JFrame
         Opc_3 = new RoundedPanel(20);
         lbl_3 = new javax.swing.JLabel();
         lblopc_3 = new javax.swing.JLabel();
+        Opc_4 = new RoundedPanel(20);
+        lbl_7 = new javax.swing.JLabel();
+        lblopc_4 = new javax.swing.JLabel();
+        Opc_5 = new RoundedPanel(20);
+        lbl_9 = new javax.swing.JLabel();
+        lblopc_5 = new javax.swing.JLabel();
+        Opc_6 = new RoundedPanel(20);
+        lbl_11 = new javax.swing.JLabel();
+        lblopc_6 = new javax.swing.JLabel();
         GestionUsuarios = new javax.swing.JPanel();
         lbl1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
@@ -229,6 +305,87 @@ public class Usuarios_A extends javax.swing.JFrame
         lblIconAct2 = new javax.swing.JLabel();
         txtBuscar2 = new javax.swing.JTextField();
         lbl_6 = new javax.swing.JLabel();
+        Pruebas = new javax.swing.JPanel();
+        lbl17 = new javax.swing.JLabel();
+        lbl18 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        pnlOpc8 = new javax.swing.JPanel();
+        opc8 = new javax.swing.JLabel();
+        pnlOpc9 = new javax.swing.JPanel();
+        opc9 = new javax.swing.JLabel();
+        pnlOpc10 = new javax.swing.JPanel();
+        opc10 = new javax.swing.JLabel();
+        subirDatosP = new javax.swing.JPanel();
+        lbl20 = new javax.swing.JLabel();
+        lbl21 = new javax.swing.JLabel();
+        txtIDMuestra = new javax.swing.JTextField();
+        lbl22 = new javax.swing.JLabel();
+        txtResultado = new javax.swing.JTextField();
+        lblRegPrueba = new javax.swing.JLabel();
+        txtNombreUsuP = new javax.swing.JLabel();
+        txtIDMuestraM = new javax.swing.JLabel();
+        revisarDatosP = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblPruebas = new rojeru_san.complementos.RSTableMetro();
+        lblEliminar3 = new javax.swing.JLabel();
+        lblModificar2 = new javax.swing.JLabel();
+        lblIconAct3 = new javax.swing.JLabel();
+        txtBuscar3 = new javax.swing.JTextField();
+        lbl_8 = new javax.swing.JLabel();
+        Inventario = new javax.swing.JPanel();
+        lbl19 = new javax.swing.JLabel();
+        lbl23 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        pnlOpc11 = new javax.swing.JPanel();
+        opc11 = new javax.swing.JLabel();
+        pnlOpc12 = new javax.swing.JPanel();
+        opc12 = new javax.swing.JLabel();
+        pnlOpc13 = new javax.swing.JPanel();
+        opc13 = new javax.swing.JLabel();
+        subirDatosI = new javax.swing.JPanel();
+        lbl24 = new javax.swing.JLabel();
+        txtNombreUsuI = new javax.swing.JLabel();
+        lbl25 = new javax.swing.JLabel();
+        txtNomInventario = new javax.swing.JTextField();
+        lbl27 = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
+        lbl28 = new javax.swing.JLabel();
+        lblRegInv = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtDatosI = new javax.swing.JTextArea();
+        revisarDatosI = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblInventario = new rojeru_san.complementos.RSTableMetro();
+        lblEliminar4 = new javax.swing.JLabel();
+        lblModificar3 = new javax.swing.JLabel();
+        lblIconAct4 = new javax.swing.JLabel();
+        txtBuscar4 = new javax.swing.JTextField();
+        lbl_10 = new javax.swing.JLabel();
+        ProdDis = new javax.swing.JPanel();
+        lbl26 = new javax.swing.JLabel();
+        lbl29 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        pnlOpc14 = new javax.swing.JPanel();
+        opc14 = new javax.swing.JLabel();
+        pnlOpc15 = new javax.swing.JPanel();
+        opc15 = new javax.swing.JLabel();
+        pnlOpc16 = new javax.swing.JPanel();
+        opc16 = new javax.swing.JLabel();
+        subirDatosPD = new javax.swing.JPanel();
+        lbl30 = new javax.swing.JLabel();
+        txtNombreUsuPD = new javax.swing.JLabel();
+        lbl33 = new javax.swing.JLabel();
+        lblGuardarInf = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        txtDatosPD = new javax.swing.JTextArea();
+        revisarDatosPD = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tblMonitoreo = new rojeru_san.complementos.RSTableMetro();
+        lblEliminar5 = new javax.swing.JLabel();
+        lblModificar4 = new javax.swing.JLabel();
+        lblIconAct5 = new javax.swing.JLabel();
+        txtBuscar5 = new javax.swing.JTextField();
+        lbl_12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -287,6 +444,60 @@ public class Usuarios_A extends javax.swing.JFrame
         Opc_3.add(lblopc_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 240, -1));
 
         getContentPane().add(Opc_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 320, 40));
+
+        Opc_4.setBackground(new java.awt.Color(161,29,152, 150));
+        Opc_4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Opc_4MouseClicked(evt);
+            }
+        });
+        Opc_4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Opc_4.add(lbl_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, 30, 30));
+
+        lblopc_4.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lblopc_4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblopc_4.setText("Pruebas de Calidad");
+        lblopc_4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_4.add(lblopc_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 240, -1));
+
+        getContentPane().add(Opc_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 320, 40));
+
+        Opc_5.setBackground(new java.awt.Color(161,29,152, 150));
+        Opc_5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Opc_5MouseClicked(evt);
+            }
+        });
+        Opc_5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Opc_5.add(lbl_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, 30, 30));
+
+        lblopc_5.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lblopc_5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblopc_5.setText("Control de Inventario");
+        lblopc_5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_5.add(lblopc_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 240, -1));
+
+        getContentPane().add(Opc_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 320, 40));
+
+        Opc_6.setBackground(new java.awt.Color(161,29,152, 150));
+        Opc_6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Opc_6MouseClicked(evt);
+            }
+        });
+        Opc_6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Opc_6.add(lbl_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, 30, 30));
+
+        lblopc_6.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lblopc_6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblopc_6.setText("Producción y Distribución");
+        lblopc_6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_6.add(lblopc_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 260, -1));
+
+        getContentPane().add(Opc_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 320, 40));
 
         GestionUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         GestionUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -884,6 +1095,629 @@ public class Usuarios_A extends javax.swing.JFrame
 
         getContentPane().add(Muestras, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1100, 850));
 
+        Pruebas.setBackground(new java.awt.Color(255, 255, 255));
+        Pruebas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl17.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl17.setForeground(new java.awt.Color(105, 99, 135));
+        lbl17.setText("Ingresa y actualiza los resultados de las pruebas de calidad realizadas en las muestras.");
+        Pruebas.add(lbl17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1080, -1));
+
+        lbl18.setFont(new java.awt.Font("Roboto Black", 1, 42)); // NOI18N
+        lbl18.setForeground(new java.awt.Color(161, 29, 152));
+        lbl18.setText("Pruebas de Calidad");
+        Pruebas.add(lbl18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jPanel6.setBackground(new java.awt.Color(72, 149, 239));
+        Pruebas.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 900, 2));
+
+        pnlOpc8.setBackground(new java.awt.Color(72, 149, 239));
+        Pruebas.add(pnlOpc8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 130, 7));
+
+        opc8.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc8.setText("Subir datos");
+        opc8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opc8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opc8MouseClicked(evt);
+            }
+        });
+        Pruebas.add(opc8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 126, 130, -1));
+
+        pnlOpc9.setBackground(new java.awt.Color(72, 149, 239));
+        Pruebas.add(pnlOpc9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 155, 190, 7));
+
+        opc9.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc9.setForeground(new java.awt.Color(105, 99, 135));
+        opc9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc9.setText("Revisar registros");
+        opc9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opc9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opc9MouseClicked(evt);
+            }
+        });
+        Pruebas.add(opc9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 126, 190, -1));
+
+        pnlOpc10.setBackground(new java.awt.Color(72, 149, 239));
+        Pruebas.add(pnlOpc10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 155, 220, 7));
+
+        opc10.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc10.setForeground(new java.awt.Color(105, 99, 135));
+        opc10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc10.setText("Actualizar resultados");
+        opc10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Pruebas.add(opc10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 126, 220, -1));
+
+        subirDatosP.setBackground(new java.awt.Color(255, 255, 255));
+        subirDatosP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl20.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl20.setText("Nombre de Usuario");
+        subirDatosP.add(lbl20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 230, -1));
+
+        lbl21.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl21.setText("ID de la Muestra");
+        subirDatosP.add(lbl21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 280, -1));
+
+        txtIDMuestra.setBackground(new java.awt.Color(118, 186, 254));
+        txtIDMuestra.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtIDMuestra.setForeground(new java.awt.Color(255, 255, 255));
+        txtIDMuestra.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        subirDatosP.add(txtIDMuestra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 660, 45));
+
+        lbl22.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl22.setText("Resultado");
+        subirDatosP.add(lbl22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 190, -1));
+
+        txtResultado.setBackground(new java.awt.Color(118, 186, 254));
+        txtResultado.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtResultado.setForeground(new java.awt.Color(255, 255, 255));
+        txtResultado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        subirDatosP.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 660, 45));
+
+        lblRegPrueba.setBackground(new java.awt.Color(20, 89, 169));
+        lblRegPrueba.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblRegPrueba.setForeground(new java.awt.Color(255, 255, 255));
+        lblRegPrueba.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRegPrueba.setText("INSERTAR PRUEBA");
+        lblRegPrueba.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblRegPrueba.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegPrueba.setOpaque(true);
+        lblRegPrueba.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegPruebaMouseClicked(evt);
+            }
+        });
+        subirDatosP.add(lblRegPrueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 430, 55));
+
+        txtNombreUsuP.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        txtNombreUsuP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtNombreUsuP.setText("\"\"");
+        txtNombreUsuP.setToolTipText("");
+        subirDatosP.add(txtNombreUsuP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 660, 45));
+
+        txtIDMuestraM.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        txtIDMuestraM.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtIDMuestraM.setText("\"\"");
+        txtIDMuestraM.setToolTipText("");
+        subirDatosP.add(txtIDMuestraM, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 660, 45));
+
+        Pruebas.add(subirDatosP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 830, 640));
+
+        revisarDatosP.setBackground(new java.awt.Color(255, 255, 255));
+        revisarDatosP.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblPruebas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblPruebas.setColorBackgoundHead(new java.awt.Color(20, 89, 169));
+        tblPruebas.setColorFilasBackgound2(new java.awt.Color(72, 149, 239));
+        tblPruebas.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblPruebas.setColorFilasForeground2(new java.awt.Color(255, 255, 255));
+        tblPruebas.setFuenteFilas(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        tblPruebas.setFuenteFilasSelect(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        tblPruebas.setFuenteHead(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        tblPruebas.setRowHeight(25);
+        jScrollPane6.setViewportView(tblPruebas);
+
+        revisarDatosP.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 860, 480));
+
+        lblEliminar3.setBackground(new java.awt.Color(20, 89, 169));
+        lblEliminar3.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblEliminar3.setForeground(new java.awt.Color(255, 255, 255));
+        lblEliminar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEliminar3.setText("ELIMINAR");
+        lblEliminar3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblEliminar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEliminar3.setOpaque(true);
+        lblEliminar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEliminar3MouseClicked(evt);
+            }
+        });
+        revisarDatosP.add(lblEliminar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, 280, 55));
+
+        lblModificar2.setBackground(new java.awt.Color(20, 89, 169));
+        lblModificar2.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblModificar2.setForeground(new java.awt.Color(255, 255, 255));
+        lblModificar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblModificar2.setText("ACTUALIZAR RESULTADO");
+        lblModificar2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblModificar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblModificar2.setOpaque(true);
+        lblModificar2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblModificar2MouseClicked(evt);
+            }
+        });
+        revisarDatosP.add(lblModificar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 320, 55));
+
+        lblIconAct3.setBackground(new java.awt.Color(20, 89, 169));
+        lblIconAct3.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblIconAct3.setForeground(new java.awt.Color(255, 255, 255));
+        lblIconAct3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconAct3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblIconAct3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIconAct3.setOpaque(true);
+        lblIconAct3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIconAct3MouseClicked(evt);
+            }
+        });
+        revisarDatosP.add(lblIconAct3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 70, 55));
+
+        Pruebas.add(revisarDatosP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 910, 640));
+
+        txtBuscar3.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtBuscar3.setText(" Buscar Usuario");
+        txtBuscar3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtBuscar3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscar3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscar3FocusLost(evt);
+            }
+        });
+        Pruebas.add(txtBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 123, 190, 30));
+
+        lbl_8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_8MouseClicked(evt);
+            }
+        });
+        Pruebas.add(lbl_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 125, 30, 25));
+
+        getContentPane().add(Pruebas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1100, 850));
+
+        Inventario.setBackground(new java.awt.Color(255, 255, 255));
+        Inventario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl19.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl19.setForeground(new java.awt.Color(105, 99, 135));
+        lbl19.setText("Seguimiento y control del inventario de los productos mediante el registro de sus entradas.");
+        Inventario.add(lbl19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1080, -1));
+
+        lbl23.setFont(new java.awt.Font("Roboto Black", 1, 42)); // NOI18N
+        lbl23.setForeground(new java.awt.Color(161, 29, 152));
+        lbl23.setText("Gestión de Inventario");
+        Inventario.add(lbl23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jPanel7.setBackground(new java.awt.Color(72, 149, 239));
+        Inventario.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 900, 2));
+
+        pnlOpc11.setBackground(new java.awt.Color(72, 149, 239));
+        Inventario.add(pnlOpc11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 130, 7));
+
+        opc11.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc11.setText("Subir datos");
+        opc11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opc11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opc11MouseClicked(evt);
+            }
+        });
+        Inventario.add(opc11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 126, 130, -1));
+
+        pnlOpc12.setBackground(new java.awt.Color(72, 149, 239));
+        Inventario.add(pnlOpc12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 155, 190, 7));
+
+        opc12.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc12.setForeground(new java.awt.Color(105, 99, 135));
+        opc12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc12.setText("Revisar registros");
+        opc12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opc12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opc12MouseClicked(evt);
+            }
+        });
+        Inventario.add(opc12, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 126, 190, -1));
+
+        pnlOpc13.setBackground(new java.awt.Color(72, 149, 239));
+        Inventario.add(pnlOpc13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 155, 200, 7));
+
+        opc13.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc13.setForeground(new java.awt.Color(105, 99, 135));
+        opc13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc13.setText("Modificar registros");
+        opc13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Inventario.add(opc13, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 126, 200, -1));
+
+        subirDatosI.setBackground(new java.awt.Color(255, 255, 255));
+        subirDatosI.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl24.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl24.setText("Nombre de Usuario");
+        subirDatosI.add(lbl24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 220, -1));
+
+        txtNombreUsuI.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        txtNombreUsuI.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtNombreUsuI.setText("\"\"");
+        txtNombreUsuI.setToolTipText("");
+        subirDatosI.add(txtNombreUsuI, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 660, 45));
+
+        lbl25.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl25.setText("Título de Inventario");
+        subirDatosI.add(lbl25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 230, -1));
+
+        txtNomInventario.setBackground(new java.awt.Color(118, 186, 254));
+        txtNomInventario.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtNomInventario.setForeground(new java.awt.Color(255, 255, 255));
+        txtNomInventario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        subirDatosI.add(txtNomInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 660, 45));
+
+        lbl27.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl27.setText("Cantidad");
+        subirDatosI.add(lbl27, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 190, -1));
+
+        txtCantidad.setBackground(new java.awt.Color(118, 186, 254));
+        txtCantidad.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtCantidad.setForeground(new java.awt.Color(255, 255, 255));
+        txtCantidad.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        subirDatosI.add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 660, 45));
+
+        lbl28.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl28.setText("Datos");
+        subirDatosI.add(lbl28, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 190, -1));
+
+        lblRegInv.setBackground(new java.awt.Color(20, 89, 169));
+        lblRegInv.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblRegInv.setForeground(new java.awt.Color(255, 255, 255));
+        lblRegInv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRegInv.setText("REGISTRAR INVENTARIO");
+        lblRegInv.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblRegInv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegInv.setOpaque(true);
+        lblRegInv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegInvMouseClicked(evt);
+            }
+        });
+        subirDatosI.add(lblRegInv, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 540, 430, 55));
+
+        txtDatosI.setBackground(new java.awt.Color(118, 186, 254));
+        txtDatosI.setColumns(20);
+        txtDatosI.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtDatosI.setForeground(new java.awt.Color(255, 255, 255));
+        txtDatosI.setRows(5);
+        txtDatosI.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jScrollPane5.setViewportView(txtDatosI);
+
+        subirDatosI.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 660, 140));
+
+        Inventario.add(subirDatosI, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 830, 640));
+
+        revisarDatosI.setBackground(new java.awt.Color(255, 255, 255));
+        revisarDatosI.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblInventario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblInventario.setColorBackgoundHead(new java.awt.Color(20, 89, 169));
+        tblInventario.setColorFilasBackgound2(new java.awt.Color(72, 149, 239));
+        tblInventario.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblInventario.setColorFilasForeground2(new java.awt.Color(255, 255, 255));
+        tblInventario.setFuenteFilas(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        tblInventario.setFuenteFilasSelect(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        tblInventario.setFuenteHead(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        tblInventario.setRowHeight(25);
+        jScrollPane7.setViewportView(tblInventario);
+
+        revisarDatosI.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 900, 480));
+
+        lblEliminar4.setBackground(new java.awt.Color(20, 89, 169));
+        lblEliminar4.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblEliminar4.setForeground(new java.awt.Color(255, 255, 255));
+        lblEliminar4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEliminar4.setText("ELIMINAR");
+        lblEliminar4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblEliminar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEliminar4.setOpaque(true);
+        lblEliminar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEliminar4MouseClicked(evt);
+            }
+        });
+        revisarDatosI.add(lblEliminar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, 280, 55));
+
+        lblModificar3.setBackground(new java.awt.Color(20, 89, 169));
+        lblModificar3.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblModificar3.setForeground(new java.awt.Color(255, 255, 255));
+        lblModificar3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblModificar3.setText("MODIFICAR");
+        lblModificar3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblModificar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblModificar3.setOpaque(true);
+        lblModificar3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblModificar3MouseClicked(evt);
+            }
+        });
+        revisarDatosI.add(lblModificar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 280, 55));
+
+        lblIconAct4.setBackground(new java.awt.Color(20, 89, 169));
+        lblIconAct4.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblIconAct4.setForeground(new java.awt.Color(255, 255, 255));
+        lblIconAct4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconAct4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblIconAct4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIconAct4.setOpaque(true);
+        lblIconAct4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIconAct4MouseClicked(evt);
+            }
+        });
+        revisarDatosI.add(lblIconAct4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 70, 55));
+
+        Inventario.add(revisarDatosI, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 910, 640));
+
+        txtBuscar4.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtBuscar4.setText(" Buscar Usuario");
+        txtBuscar4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtBuscar4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscar4FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscar4FocusLost(evt);
+            }
+        });
+        Inventario.add(txtBuscar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 123, 190, 30));
+
+        lbl_10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_10MouseClicked(evt);
+            }
+        });
+        Inventario.add(lbl_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 125, 30, 25));
+
+        getContentPane().add(Inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1100, 850));
+
+        ProdDis.setBackground(new java.awt.Color(255, 255, 255));
+        ProdDis.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl26.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl26.setForeground(new java.awt.Color(105, 99, 135));
+        lbl26.setText("Generación de informes sobre la producción y distribución de los productos");
+        ProdDis.add(lbl26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1080, -1));
+
+        lbl29.setFont(new java.awt.Font("Roboto Black", 1, 42)); // NOI18N
+        lbl29.setForeground(new java.awt.Color(161, 29, 152));
+        lbl29.setText("Monitoreo de Producción y Distribución");
+        ProdDis.add(lbl29, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jPanel8.setBackground(new java.awt.Color(72, 149, 239));
+        ProdDis.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 900, 2));
+
+        pnlOpc14.setBackground(new java.awt.Color(72, 149, 239));
+        ProdDis.add(pnlOpc14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 130, 7));
+
+        opc14.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc14.setText("Subir datos");
+        opc14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opc14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opc14MouseClicked(evt);
+            }
+        });
+        ProdDis.add(opc14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 126, 130, -1));
+
+        pnlOpc15.setBackground(new java.awt.Color(72, 149, 239));
+        ProdDis.add(pnlOpc15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 155, 190, 7));
+
+        opc15.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc15.setForeground(new java.awt.Color(105, 99, 135));
+        opc15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc15.setText("Revisar registros");
+        opc15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opc15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opc15MouseClicked(evt);
+            }
+        });
+        ProdDis.add(opc15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 126, 190, -1));
+
+        pnlOpc16.setBackground(new java.awt.Color(72, 149, 239));
+        ProdDis.add(pnlOpc16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 155, 200, 7));
+
+        opc16.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc16.setForeground(new java.awt.Color(105, 99, 135));
+        opc16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc16.setText("Modificar registros");
+        opc16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ProdDis.add(opc16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 126, 200, -1));
+
+        subirDatosPD.setBackground(new java.awt.Color(255, 255, 255));
+        subirDatosPD.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl30.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl30.setText("Nombre de Usuario");
+        subirDatosPD.add(lbl30, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 220, -1));
+
+        txtNombreUsuPD.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        txtNombreUsuPD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        txtNombreUsuPD.setText("\"\"");
+        txtNombreUsuPD.setToolTipText("");
+        subirDatosPD.add(txtNombreUsuPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 660, 45));
+
+        lbl33.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl33.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lbl33.setText("Datos");
+        subirDatosPD.add(lbl33, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 190, -1));
+
+        lblGuardarInf.setBackground(new java.awt.Color(20, 89, 169));
+        lblGuardarInf.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblGuardarInf.setForeground(new java.awt.Color(255, 255, 255));
+        lblGuardarInf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblGuardarInf.setText("GUARDAR INFORME");
+        lblGuardarInf.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblGuardarInf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblGuardarInf.setOpaque(true);
+        lblGuardarInf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGuardarInfMouseClicked(evt);
+            }
+        });
+        subirDatosPD.add(lblGuardarInf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 540, 430, 55));
+
+        txtDatosPD.setBackground(new java.awt.Color(118, 186, 254));
+        txtDatosPD.setColumns(20);
+        txtDatosPD.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtDatosPD.setForeground(new java.awt.Color(255, 255, 255));
+        txtDatosPD.setRows(5);
+        txtDatosPD.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jScrollPane8.setViewportView(txtDatosPD);
+
+        subirDatosPD.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 660, 340));
+
+        ProdDis.add(subirDatosPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 830, 640));
+
+        revisarDatosPD.setBackground(new java.awt.Color(255, 255, 255));
+        revisarDatosPD.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblMonitoreo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblMonitoreo.setColorBackgoundHead(new java.awt.Color(20, 89, 169));
+        tblMonitoreo.setColorFilasBackgound2(new java.awt.Color(72, 149, 239));
+        tblMonitoreo.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblMonitoreo.setColorFilasForeground2(new java.awt.Color(255, 255, 255));
+        tblMonitoreo.setFuenteFilas(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        tblMonitoreo.setFuenteFilasSelect(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        tblMonitoreo.setFuenteHead(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        tblMonitoreo.setRowHeight(25);
+        jScrollPane9.setViewportView(tblMonitoreo);
+
+        revisarDatosPD.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 900, 480));
+
+        lblEliminar5.setBackground(new java.awt.Color(20, 89, 169));
+        lblEliminar5.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblEliminar5.setForeground(new java.awt.Color(255, 255, 255));
+        lblEliminar5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEliminar5.setText("ELIMINAR");
+        lblEliminar5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblEliminar5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEliminar5.setOpaque(true);
+        lblEliminar5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEliminar5MouseClicked(evt);
+            }
+        });
+        revisarDatosPD.add(lblEliminar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, 280, 55));
+
+        lblModificar4.setBackground(new java.awt.Color(20, 89, 169));
+        lblModificar4.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblModificar4.setForeground(new java.awt.Color(255, 255, 255));
+        lblModificar4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblModificar4.setText("MODIFICAR");
+        lblModificar4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblModificar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblModificar4.setOpaque(true);
+        lblModificar4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblModificar4MouseClicked(evt);
+            }
+        });
+        revisarDatosPD.add(lblModificar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, 280, 55));
+
+        lblIconAct5.setBackground(new java.awt.Color(20, 89, 169));
+        lblIconAct5.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblIconAct5.setForeground(new java.awt.Color(255, 255, 255));
+        lblIconAct5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconAct5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblIconAct5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIconAct5.setOpaque(true);
+        lblIconAct5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIconAct5MouseClicked(evt);
+            }
+        });
+        revisarDatosPD.add(lblIconAct5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 70, 55));
+
+        ProdDis.add(revisarDatosPD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 910, 640));
+
+        txtBuscar5.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtBuscar5.setText(" Buscar Usuario");
+        txtBuscar5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtBuscar5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscar5FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscar5FocusLost(evt);
+            }
+        });
+        ProdDis.add(txtBuscar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 123, 190, 30));
+
+        lbl_12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_12MouseClicked(evt);
+            }
+        });
+        ProdDis.add(lbl_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 125, 30, 25));
+
+        getContentPane().add(ProdDis, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1100, 850));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1114,6 +1948,18 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_3.setFont(prinOpc);
         lblopc_3.setForeground(new Color(0,0,0));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras_B.png")), lbl_3, 0);
+        Opc_4.setBackground(new Color(255,255,255));
+        lblopc_4.setFont(prinOpc);
+        lblopc_4.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Calidad_B.png")), lbl_7, 0);
+        Opc_5.setBackground(new Color(255,255,255));
+        lblopc_5.setFont(prinOpc);
+        lblopc_5.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Inventory_B.png")), lbl_9, 0);
+        Opc_6.setBackground(new Color(255,255,255));
+        lblopc_6.setFont(prinOpc);
+        lblopc_6.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
         
         GestionUsuarios.setVisible(true);
         opc1.setFont(opc);
@@ -1135,6 +1981,9 @@ public class Usuarios_A extends javax.swing.JFrame
         
         AccesosRemotos.setVisible(false);
         Muestras.setVisible(false);
+        Pruebas.setVisible(false);
+        Inventario.setVisible(false);
+        ProdDis.setVisible(false);
     }//GEN-LAST:event_Opc_1MouseClicked
 
     private void Opc_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Opc_2MouseClicked
@@ -1150,12 +1999,27 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_3.setFont(prinOpc);
         lblopc_3.setForeground(new Color(0,0,0));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras_B.png")), lbl_3, 0);
+        Opc_4.setBackground(new Color(255,255,255));
+        lblopc_4.setFont(prinOpc);
+        lblopc_4.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Calidad_B.png")), lbl_7, 0);
+        Opc_5.setBackground(new Color(255,255,255));
+        lblopc_5.setFont(prinOpc);
+        lblopc_5.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Inventory_B.png")), lbl_9, 0);
+        Opc_6.setBackground(new Color(255,255,255));
+        lblopc_6.setFont(prinOpc);
+        lblopc_6.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
         
         GestionUsuarios.setVisible(false);
         AccesosRemotos.setVisible(true);
         ListarAccesos();
         txtBuscar.setText(" Buscar Usuario");
         Muestras.setVisible(false);
+        Pruebas.setVisible(false);
+        Inventario.setVisible(false);
+        ProdDis.setVisible(false);
     }//GEN-LAST:event_Opc_2MouseClicked
 
     private void lblEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar1MouseClicked
@@ -1236,14 +2100,40 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_3.setFont(opc);
         lblopc_3.setForeground(new Color(255,255,255));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras.png")), lbl_3, 0);
-                
+        Opc_4.setBackground(new Color(255,255,255));
+        lblopc_4.setFont(prinOpc);
+        lblopc_4.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Calidad_B.png")), lbl_7, 0);
+        Opc_5.setBackground(new Color(255,255,255));
+        lblopc_5.setFont(prinOpc);
+        lblopc_5.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Inventory_B.png")), lbl_9, 0);
+        Opc_6.setBackground(new Color(255,255,255));
+        lblopc_6.setFont(prinOpc);
+        lblopc_6.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        
         GestionUsuarios.setVisible(false);
         AccesosRemotos.setVisible(false);
         Muestras.setVisible(true);
-        revisarDatosM.setVisible(false);
+        opc5.setFont(opc);
+        opc5.setForeground(new Color(0,0,0));
+        opc6.setFont(subT);
+        opc6.setForeground(new Color(105,99,135));
+        opc7.setFont(subT);
+        opc7.setForeground(new Color(105,99,135));
+        pnlOpc5.setVisible(true);
         pnlOpc6.setVisible(false);
         pnlOpc7.setVisible(false);
+        subirDatosM.setVisible(true);
+        revisarDatosM.setVisible(false);  
+        txtNombreUsu.setFont(subT);
+        txtNombreUsu.setForeground(new Color(105,99,135));
         txtNombreUsu.setText(nombreLogin);
+        txtBuscar2.setText(" Buscar Usuario");
+        Pruebas.setVisible(false);
+        Inventario.setVisible(false);
+        ProdDis.setVisible(false);
     }//GEN-LAST:event_Opc_3MouseClicked
 
     private void opc5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc5MouseClicked
@@ -1278,10 +2168,7 @@ public class Usuarios_A extends javax.swing.JFrame
 
     private void lblRegMuestraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegMuestraMouseClicked
     String resp;
-    Date actual = new Date();
-    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    String fecha = formato.format(actual);
-        
+                
         if(!txtComponente.getText().isEmpty())
             if(txtComponente.getText().equalsIgnoreCase("SI") || txtComponente.getText().equalsIgnoreCase("NO"))
                 if(!txtContaminacion.getText().isEmpty())
@@ -1289,14 +2176,39 @@ public class Usuarios_A extends javax.swing.JFrame
                         if(!txtMg.getText().isEmpty())
                             if(txtMg.getText().matches("\\d+(\\.\\d+)?"))
                             {
-                                resp = CONTROLMUESTRAS.Insertar(CONTROL.getIDConcat(nombreLogin), fecha, txtComponente.getText().equalsIgnoreCase("Si"), txtContaminacion.getText().equalsIgnoreCase("Si"), Float.parseFloat(txtMg.getText()), txtDatos.getText());
-                                OptionPane.showMessage("Inserción de Muestras", "Muestra insertada exitosamente", "/img/iconos/Info.png");
-                                
-                                txtComponente.setText("SI / NO");
-                                txtContaminacion.setText("SI / NO");
-                                txtMg.setText("");
-                                txtDatos.setText("");
-                                ListarMuestras();
+                                if(lblRegMuestra.getText().equals("INSERTAR MUESTRA"))
+                                {
+                                    resp = CONTROLMUESTRAS.Insertar(CONTROL.getIDConcat(nombreLogin), fecha, txtComponente.getText().equalsIgnoreCase("Si"), txtContaminacion.getText().equalsIgnoreCase("Si"), Float.parseFloat(txtMg.getText()), txtDatos.getText());
+                                    OptionPane.showMessage("Inserción de Muestras", "Muestra insertada exitosamente", "/img/iconos/Info.png");
+                                    
+                                    txtComponente.setText("SI / NO");
+                                    txtContaminacion.setText("SI / NO");
+                                    txtMg.setText("");
+                                    txtDatos.setText("");
+                                    ListarMuestras();
+                                }
+                                else
+                                    if(lblRegMuestra.getText().equals("MODIFICAR"))
+                                    {
+                                        resp = CONTROLMUESTRAS.Modificar(id, txtComponente.getText().equalsIgnoreCase("Si"), txtContaminacion.getText().equalsIgnoreCase("Si"), Float.parseFloat(txtMg.getText()), txtDatos.getText());
+                                        OptionPane.showMessage("Inserción de Muestras", "Muestra modificada exitosamente", "/img/iconos/Info.png");                                       
+                                        
+                                        txtComponente.setText("SI / NO");
+                                        txtContaminacion.setText("SI / NO");
+                                        txtMg.setText("");
+                                        txtDatos.setText("");
+                                        ListarMuestras();
+                                        lblRegMuestra.setText("INSERTAR MUESTRA");
+                                        subirDatosM.setVisible(false);
+                                        revisarDatosM.setVisible(true);
+                                        opc6.setFont(opc);
+                                        opc6.setForeground(new Color(0,0,0));
+                                        opc7.setFont(subT);
+                                        opc7.setForeground(new Color(105,99,135));
+                                        pnlOpc6.setVisible(true);
+                                        pnlOpc7.setVisible(false);
+
+                                    }                                                                
                             }
                             else
                                 OptionPane.showMessage("Inserción de Muestras", "La cantidad de miligramos debe ser un número entero", "/img/iconos/Close.png");
@@ -1313,11 +2225,56 @@ public class Usuarios_A extends javax.swing.JFrame
     }//GEN-LAST:event_lblRegMuestraMouseClicked
 
     private void lblEliminar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar2MouseClicked
-        // TODO add your handling code here:
+        if(tblMuestras.getSelectedRowCount() == 1)
+        {
+            id  = Integer.parseInt(String.valueOf(tblMuestras.getValueAt(tblMuestras.getSelectedRow(), 0)));
+            nombre = String.valueOf(tblMuestras.getValueAt(tblMuestras.getSelectedRow(), 1));
+            if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar la muestra registrada por el usuario " + nombre + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                String resp = CONTROLMUESTRAS.Eliminar(id);
+                if(resp.equals("OK"))
+                {
+                    OptionPane.showMessage("Eliminar", "Muestra eliminada", "/img/iconos/Info.png");
+                    ListarMuestras();
+                }
+                else
+                    OptionPane.showMessage("Eliminar", "Hubo un error al eliminar la muestra", "/img/iconos/Close.png");
+            }
+        }
+        else
+            OptionPane.showMessage("Eliminar", "Debe seleccionar una muestra de la tabla", "/img/iconos/Close.png");
     }//GEN-LAST:event_lblEliminar2MouseClicked
 
     private void lblModificar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModificar1MouseClicked
-        // TODO add your handling code here:
+        if(tblMuestras.getSelectedRowCount() == 1)
+        {
+            opc5.setFont(subT);
+            opc5.setForeground(new Color(105, 99, 135));
+            opc6.setFont(subT);
+            opc6.setForeground(new Color(105,99,135));
+            opc7.setFont(opc);
+            opc7.setForeground(new Color(0,0,0));
+            pnlOpc5.setVisible(false);
+            pnlOpc6.setVisible(false);
+            pnlOpc7.setVisible(true);
+            subirDatosM.setVisible(true);
+            revisarDatosM.setVisible(false);
+            
+            lblRegMuestra.setText("MODIFICAR");
+            
+            id  = Integer.parseInt(String.valueOf(tblMuestras.getValueAt(tblMuestras.getSelectedRow(), 0)));            
+            txtNombreUsu.setText(String.valueOf(tblMuestras.getValueAt(tblMuestras.getSelectedRow(), 1)));
+            compExt = String.valueOf(tblMuestras.getValueAt(tblMuestras.getSelectedRow(), 4));
+            contCru = String.valueOf(tblMuestras.getValueAt(tblMuestras.getSelectedRow(), 5));
+            mg = Float.parseFloat(String.valueOf(tblMuestras.getValueAt(tblMuestras.getSelectedRow(), 6)));
+            datosM = String.valueOf(tblMuestras.getValueAt(tblMuestras.getSelectedRow(), 7));
+            txtComponente.setText(compExt);
+            txtContaminacion.setText(contCru);
+            txtMg.setText(String.valueOf(mg));
+            txtDatos.setText(datosM);
+        }
+        else
+            OptionPane.showMessage("Modificar", "Debe seleccionar un usuario de la tabla", "/img/iconos/Close.png");
     }//GEN-LAST:event_lblModificar1MouseClicked
 
     private void lblIconAct2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconAct2MouseClicked
@@ -1363,6 +2320,602 @@ public class Usuarios_A extends javax.swing.JFrame
         if(txtContaminacion.getText().isEmpty())
             txtContaminacion.setText("SI / NO");
     }//GEN-LAST:event_txtContaminacionFocusLost
+
+    private void Opc_4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Opc_4MouseClicked
+        Opc_1.setBackground(new Color(255,255,255));
+        lblopc_1.setFont(prinOpc);
+        lblopc_1.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/User_B.png")), lbl_1, 0);
+        Opc_2.setBackground(new Color(255,255,255));
+        lblopc_2.setFont(prinOpc);
+        lblopc_2.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);
+        Opc_3.setBackground(new Color(255,255,255));
+        lblopc_3.setFont(prinOpc);
+        lblopc_3.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras_B.png")), lbl_3, 0);
+        Opc_4.setBackground(new Color(161,29,152, 150));
+        lblopc_4.setFont(opc);
+        lblopc_4.setForeground(new Color(255,255,255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Calidad.png")), lbl_7, 0);
+        Opc_5.setBackground(new Color(255,255,255));
+        lblopc_5.setFont(prinOpc);
+        lblopc_5.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Inventory_B.png")), lbl_9, 0);
+        Opc_6.setBackground(new Color(255,255,255));
+        lblopc_6.setFont(prinOpc);
+        lblopc_6.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        
+        GestionUsuarios.setVisible(false);
+        AccesosRemotos.setVisible(false);
+        Muestras.setVisible(false);
+        Pruebas.setVisible(true);
+        opc8.setFont(opc);
+        opc8.setForeground(new Color(0,0,0));
+        opc9.setFont(subT);
+        opc9.setForeground(new Color(105,99,135));
+        opc10.setFont(subT);
+        opc10.setForeground(new Color(105,99,135));
+        pnlOpc8.setVisible(true);
+        pnlOpc9.setVisible(false);
+        pnlOpc10.setVisible(false);
+        subirDatosP.setVisible(true);
+        revisarDatosP.setVisible(false);
+        txtBuscar3.setText(" Buscar Usuario");
+        txtNombreUsuP.setFont(subT);
+        txtNombreUsuP.setForeground(new Color(105,99,135));
+        txtNombreUsuP.setText(nombreLogin);
+        txtIDMuestraM.setVisible(false);
+        Inventario.setVisible(false);
+        ProdDis.setVisible(false);
+    }//GEN-LAST:event_Opc_4MouseClicked
+
+    private void opc8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc8MouseClicked
+        opc8.setFont(opc);
+        opc8.setForeground(new Color(0,0,0));
+        opc9.setFont(subT);
+        opc9.setForeground(new Color(105,99,135));
+        opc10.setFont(subT);
+        opc10.setForeground(new Color(105,99,135));
+        pnlOpc8.setVisible(true);
+        pnlOpc9.setVisible(false);
+        pnlOpc10.setVisible(false);
+        subirDatosP.setVisible(true);
+        txtNombreUsuP.setText(nombreLogin);
+        txtIDMuestraM.setVisible(false);
+        revisarDatosP.setVisible(false);  
+    }//GEN-LAST:event_opc8MouseClicked
+
+    private void opc9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc9MouseClicked
+        opc8.setFont(subT);
+        opc8.setForeground(new Color(105,99,135));
+        opc9.setFont(opc);
+        opc9.setForeground(new Color(0,0,0));
+        opc10.setFont(subT);
+        opc10.setForeground(new Color(105,99,135));
+        pnlOpc8.setVisible(false);
+        pnlOpc9.setVisible(true);
+        pnlOpc10.setVisible(false);
+        subirDatosP.setVisible(false);
+        revisarDatosP.setVisible(true);
+        ListarPruebas();
+    }//GEN-LAST:event_opc9MouseClicked
+
+    private void lblRegPruebaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegPruebaMouseClicked
+        if(lblRegPrueba.getText().equals("INSERTAR PRUEBA"))
+        {
+            if(!txtIDMuestra.getText().isEmpty())
+                if(CONTROLMUESTRAS.Existe(Integer.parseInt(txtIDMuestra.getText()), CONTROLMUESTRAS.getFecha(Integer.parseInt(txtIDMuestra.getText()))))
+                    if(!txtResultado.getText().isEmpty())
+                        if(valResPruebas(txtResultado.getText()))
+                        {
+                            String resp = CONTROLPRUEBAS.Insertar(CONTROL.getIDConcat(nombreLogin), Integer.parseInt(txtIDMuestra.getText()), txtResultado.getText());
+                            OptionPane.showMessage("Inserción de Pruebas", "Prueba de calidad insertada correctamente", "/img/iconos/Info.png");
+
+                            txtIDMuestra.setText("");
+                            txtResultado.setText("");
+                            ListarPruebas();
+                        }
+                        else
+                            OptionPane.showMessage("Inserción de Pruebas", "Los resultados sólo pueden ser: Aceptada, Rechazada o En proceso", "/img/iconos/Close.png");
+                    else
+                        OptionPane.showMessage("Inserción de Pruebas", "Debe ingresar el resultado de la prueba de calidad", "/img/iconos/Close.png");
+                else
+                    OptionPane.showMessage("Inserción de Pruebas", "La muestra con el ID " + txtIDMuestra.getText() + " no existe \n Consulte los registros de muestras", "/img/iconos/Close.png"); 
+            else
+                OptionPane.showMessage("Inserción de Pruebas", "Debe ingresar un ID de Muestra", "/img/iconos/Close.png");
+        }
+        else
+            if(lblRegPrueba.getText().equals("ACTUALIZAR"))
+            {
+                if(!txtResultado.getText().isEmpty())
+                    if(valResPruebas(txtResultado.getText()))
+                    {
+                        String resp = CONTROLPRUEBAS.Modificar(txtResultado.getText(), id);
+                        OptionPane.showMessage("Modificación de Pruebas", "Resultado de prueba de calidad modificado correctamente", "/img/iconos/Info.png");
+                        
+                        txtIDMuestraM.setText("");
+                        txtIDMuestraM.setVisible(false);
+                        txtIDMuestra.setVisible(true);
+                        txtResultado.setText("");
+                        lblRegPrueba.setText("INSERTAR PRUEBA");
+                        subirDatosP.setVisible(false);
+                        revisarDatosP.setVisible(true);
+                        opc9.setFont(opc);
+                        opc9.setForeground(new Color(0,0,0));
+                        opc10.setFont(subT);
+                        opc10.setForeground(new Color(105,99,135));
+                        pnlOpc9.setVisible(true);
+                        pnlOpc10.setVisible(false);
+                        ListarPruebas();
+                    }
+                    else
+                        OptionPane.showMessage("Modificación de Pruebas", "Los resultados sólo pueden ser: Aceptada, Rechazada o En proceso", "/img/iconos/Close.png");
+                else
+                    OptionPane.showMessage("Modificación de Pruebas", "Debe ingresar el resultado de la prueba de calidad", "/img/iconos/Close.png");
+            }
+    }//GEN-LAST:event_lblRegPruebaMouseClicked
+
+    private void lblEliminar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar3MouseClicked
+        if(tblPruebas.getSelectedRowCount() == 1)
+        {
+            id  = Integer.parseInt(String.valueOf(tblPruebas.getValueAt(tblPruebas.getSelectedRow(), 0)));
+            nombre = String.valueOf(tblPruebas.getValueAt(tblPruebas.getSelectedRow(), 1));
+            if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar la prueba registrada por el usuario " + nombre + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                String resp = CONTROLPRUEBAS.Eliminar(id);
+                if(resp.equals("OK"))
+                {
+                    OptionPane.showMessage("Eliminar", "Prueba de calidad eliminada", "/img/iconos/Info.png");
+                    ListarPruebas();
+                }
+                else
+                    OptionPane.showMessage("Eliminar", "Hubo un error al eliminar la prueba de calidad", "/img/iconos/Close.png");
+            }
+        }
+        else
+            OptionPane.showMessage("Eliminar", "Debe seleccionar una prueba de calidad de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblEliminar3MouseClicked
+
+    private void lblModificar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModificar2MouseClicked
+        if(tblPruebas.getSelectedRowCount() == 1)
+        {
+            opc8.setFont(subT);
+            opc8.setForeground(new Color(105,99,135));
+            opc9.setFont(subT);
+            opc9.setForeground(new Color(105,99,135));
+            opc10.setFont(opc);
+            opc10.setForeground(new Color(0,0,0));
+            pnlOpc8.setVisible(false);
+            pnlOpc9.setVisible(false);
+            pnlOpc10.setVisible(true);
+            subirDatosP.setVisible(true);
+            txtIDMuestra.setVisible(false);
+            txtIDMuestraM.setVisible(true);
+            txtIDMuestraM.setFont(subT);
+            txtIDMuestraM.setForeground(new Color(105,99,135));
+            revisarDatosP.setVisible(false);            
+            
+            lblRegPrueba.setText("ACTUALIZAR");
+            
+            id = Integer.parseInt(String.valueOf(tblPruebas.getValueAt(tblPruebas.getSelectedRow(), 0)));            
+            txtNombreUsuP.setText(String.valueOf(tblPruebas.getValueAt(tblPruebas.getSelectedRow(), 1)));
+            txtIDMuestraM.setText(String.valueOf(tblPruebas.getValueAt(tblPruebas.getSelectedRow(), 2)));
+            resPrueba = String.valueOf(tblPruebas.getValueAt(tblPruebas.getSelectedRow(), 3));
+            txtResultado.setText(resPrueba);
+        }
+        else
+            OptionPane.showMessage("Modificar", "Debe seleccionar una prueba de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblModificar2MouseClicked
+
+    private void lblIconAct3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconAct3MouseClicked
+        ListarPruebas();
+    }//GEN-LAST:event_lblIconAct3MouseClicked
+
+    private void txtBuscar3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar3FocusGained
+        if(txtBuscar3.getText().equals(" Buscar Usuario"))
+            txtBuscar3.setText("");
+    }//GEN-LAST:event_txtBuscar3FocusGained
+
+    private void txtBuscar3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar3FocusLost
+        if(txtBuscar3.getText().isEmpty())
+            txtBuscar3.setText(" Buscar Usuario");
+    }//GEN-LAST:event_txtBuscar3FocusLost
+
+    private void lbl_8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_8MouseClicked
+        if(!txtBuscar3.getText().isEmpty() && !txtBuscar3.getText().equals(" Buscar Usuario"))
+            if(CONTROL.existeConcat(txtBuscar3.getText()))             
+                tblPruebas.setModel(CONTROLPRUEBAS.Buscar(txtBuscar3.getText()));                     
+            else
+                OptionPane.showMessage("Buscar", "El usuario " + txtBuscar3.getText() + " no existe en el sistema", "/img/iconos/Close.png");                           
+        else
+            OptionPane.showMessage("Buscar", "Debe ingresar un nombre de usuario a buscar", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lbl_8MouseClicked
+
+    private void Opc_5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Opc_5MouseClicked
+        Opc_1.setBackground(new Color(255,255,255));
+        lblopc_1.setFont(prinOpc);
+        lblopc_1.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/User_B.png")), lbl_1, 0);
+        Opc_2.setBackground(new Color(255,255,255));
+        lblopc_2.setFont(prinOpc);
+        lblopc_2.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);
+        Opc_3.setBackground(new Color(255,255,255));
+        lblopc_3.setFont(prinOpc);
+        lblopc_3.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras_B.png")), lbl_3, 0);
+        Opc_4.setBackground(new Color(255,255,255));
+        lblopc_4.setFont(prinOpc);
+        lblopc_4.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Calidad_B.png")), lbl_7, 0);
+        Opc_5.setBackground(new Color(161,29,152, 150));
+        lblopc_5.setFont(opc);
+        lblopc_5.setForeground(new Color(255,255,255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Inventory.png")), lbl_9, 0);
+        Opc_6.setBackground(new Color(255,255,255));
+        lblopc_6.setFont(prinOpc);
+        lblopc_6.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        
+        GestionUsuarios.setVisible(false);
+        AccesosRemotos.setVisible(false);
+        Muestras.setVisible(false);
+        Pruebas.setVisible(false);
+        Inventario.setVisible(true);
+        opc11.setFont(opc);
+        opc11.setForeground(new Color(0,0,0));
+        opc12.setFont(subT);
+        opc12.setForeground(new Color(105,99,135));
+        opc13.setFont(subT);
+        opc13.setForeground(new Color(105,99,135));
+        pnlOpc11.setVisible(true);
+        pnlOpc12.setVisible(false);
+        pnlOpc13.setVisible(false);
+        subirDatosI.setVisible(true);
+        revisarDatosI.setVisible(false);
+        txtBuscar4.setText(" Buscar Usuario");
+        txtNombreUsuI.setFont(subT);
+        txtNombreUsuI.setForeground(new Color(105,99,135));
+        txtNombreUsuI.setText(nombreLogin);    
+        ProdDis.setVisible(false);
+    }//GEN-LAST:event_Opc_5MouseClicked
+
+    private void opc11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc11MouseClicked
+        opc11.setFont(opc);
+        opc11.setForeground(new Color(0,0,0));
+        opc12.setFont(subT);
+        opc12.setForeground(new Color(105,99,135));
+        opc13.setFont(subT);
+        opc13.setForeground(new Color(105,99,135));
+        pnlOpc11.setVisible(true);
+        pnlOpc12.setVisible(false);
+        pnlOpc13.setVisible(false);
+        subirDatosI.setVisible(true);
+        revisarDatosI.setVisible(false);
+        txtNombreUsuI.setText(nombreLogin);
+    }//GEN-LAST:event_opc11MouseClicked
+
+    private void opc12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc12MouseClicked
+        opc11.setFont(subT);
+        opc11.setForeground(new Color(105,99,135));
+        opc12.setFont(opc);
+        opc12.setForeground(new Color(0,0,0));
+        opc13.setFont(subT);
+        opc13.setForeground(new Color(105,99,135));
+        pnlOpc11.setVisible(false);
+        pnlOpc12.setVisible(true);
+        pnlOpc13.setVisible(false);
+        subirDatosI.setVisible(false);
+        revisarDatosI.setVisible(true);
+        ListarInv();
+    }//GEN-LAST:event_opc12MouseClicked
+
+    private void lblRegInvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegInvMouseClicked
+        if(!txtNomInventario.getText().isEmpty())
+            if(!txtCantidad.getText().isEmpty())
+                if(txtCantidad.getText().matches("[0-9]+"))
+                {
+                    if(lblRegInv.getText().equals("REGISTRAR INVENTARIO"))
+                    {
+                        String resp = CONTROLINV.Insertar(CONTROL.getIDConcat(nombreLogin), fecha, txtNomInventario.getText(), Integer.parseInt(txtCantidad.getText()), txtDatosI.getText());
+                        OptionPane.showMessage("Registro de Inventario", "Nuevo inventario registrado", "/img/iconos/Info.png");
+                        
+                        txtNomInventario.setText("");
+                        txtCantidad.setText("");
+                        txtDatosI.setText("");
+                        ListarInv();
+                    }
+                    else
+                        if(lblRegInv.getText().equals("MODIFICAR"))
+                        {
+                            String resp = CONTROLINV.Modificar(txtNomInventario.getText(), Integer.parseInt(txtCantidad.getText()), txtDatosI.getText(), id);
+                            OptionPane.showMessage("Registro de Inventario", "Inventario modificado correctamente", "/img/iconos/Info.png");
+                            
+                            txtNomInventario.setText("");
+                            txtCantidad.setText("");
+                            txtDatosI.setText("");
+                            lblRegInv.setText("REGISTRAR INVENTARIO");
+                            ListarInv();
+                            
+                            opc12.setFont(opc);
+                            opc12.setForeground(new Color(0,0,0));
+                            opc13.setFont(subT);
+                            opc13.setForeground(new Color(105,99,135));
+                            pnlOpc12.setVisible(true);
+                            pnlOpc12.setVisible(false);
+                            subirDatosI.setVisible(false);
+                            revisarDatosI.setVisible(true);
+                        }
+                }
+                else
+                    OptionPane.showMessage("Registro de Inventario", "Debe ingresar una cantidad válida de unidades", "/img/iconos/Close.png");
+            else
+                OptionPane.showMessage("Registro de Inventario", "Debe ingresar la cantidad de stock", "/img/iconos/Close.png"); 
+        else
+            OptionPane.showMessage("Registro de Inventario", "Debe ingresar un título para el nuevo inventario", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblRegInvMouseClicked
+
+    private void lblEliminar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar4MouseClicked
+        if(tblInventario.getSelectedRowCount() == 1)
+        {
+            id  = Integer.parseInt(String.valueOf(tblInventario.getValueAt(tblInventario.getSelectedRow(), 0)));
+            nombre = String.valueOf(tblInventario.getValueAt(tblInventario.getSelectedRow(), 1));
+            if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar el inventario registrado por el usuario " + nombre + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                String resp = CONTROLINV.Eliminar(id);
+                if(resp.equals("OK"))
+                {
+                    OptionPane.showMessage("Eliminar", "Registro de inventario eliminado con éxito", "/img/iconos/Info.png");
+                    ListarInv();
+                }
+                else
+                    OptionPane.showMessage("Eliminar", "Hubo un error al eliminar el registro de inventario", "/img/iconos/Close.png");
+            }
+        }
+        else
+            OptionPane.showMessage("Eliminar", "Debe seleccionar un registro de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblEliminar4MouseClicked
+
+    private void lblModificar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModificar3MouseClicked
+        if(tblInventario.getSelectedRowCount() == 1)
+        {
+            opc11.setFont(subT);
+            opc11.setForeground(new Color(105,99,135));
+            opc12.setFont(subT);
+            opc12.setForeground(new Color(105,99,135));
+            opc13.setFont(opc);
+            opc13.setForeground(new Color(0,0,0));
+            pnlOpc11.setVisible(false);
+            pnlOpc12.setVisible(false);
+            pnlOpc13.setVisible(true);
+            subirDatosI.setVisible(true);
+            revisarDatosI.setVisible(false);            
+            
+            lblRegInv.setText("MODIFICAR");
+            
+            id = Integer.parseInt(String.valueOf(tblInventario.getValueAt(tblInventario.getSelectedRow(), 0)));            
+            txtNombreUsuI.setText(String.valueOf(tblInventario.getValueAt(tblInventario.getSelectedRow(), 1)));
+            nombre = String.valueOf(tblInventario.getValueAt(tblInventario.getSelectedRow(), 4));
+            cantidad = Integer.parseInt(String.valueOf(tblInventario.getValueAt(tblInventario.getSelectedRow(), 5)));
+            datosM = String.valueOf(tblInventario.getValueAt(tblInventario.getSelectedRow(), 6)); 
+            txtNomInventario.setText(nombre);
+            txtCantidad.setText(String.valueOf(cantidad));
+            txtDatosI.setText(datosM);
+        }
+        else
+            OptionPane.showMessage("Modificar", "Debe seleccionar un registro de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblModificar3MouseClicked
+
+    private void lblIconAct4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconAct4MouseClicked
+        ListarInv();
+    }//GEN-LAST:event_lblIconAct4MouseClicked
+
+    private void txtBuscar4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar4FocusGained
+        if(txtBuscar4.getText().equals(" Buscar Usuario"))
+            txtBuscar4.setText("");
+    }//GEN-LAST:event_txtBuscar4FocusGained
+
+    private void txtBuscar4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar4FocusLost
+        if(txtBuscar4.getText().isEmpty())
+            txtBuscar4.setText(" Buscar Usuario");
+    }//GEN-LAST:event_txtBuscar4FocusLost
+
+    private void lbl_10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_10MouseClicked
+        if(!txtBuscar4.getText().isEmpty() && !txtBuscar4.getText().equals(" Buscar Usuario"))
+            if(CONTROL.existeConcat(txtBuscar4.getText()))             
+                tblInventario.setModel(CONTROLINV.Buscar(txtBuscar4.getText()));                     
+            else
+                OptionPane.showMessage("Buscar", "El usuario " + txtBuscar4.getText() + " no existe en el sistema", "/img/iconos/Close.png");                           
+        else
+            OptionPane.showMessage("Buscar", "Debe ingresar un nombre de usuario a buscar", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lbl_10MouseClicked
+
+    private void Opc_6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Opc_6MouseClicked
+        Opc_1.setBackground(new Color(255,255,255));
+        lblopc_1.setFont(prinOpc);
+        lblopc_1.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/User_B.png")), lbl_1, 0);
+        Opc_2.setBackground(new Color(255,255,255));
+        lblopc_2.setFont(prinOpc);
+        lblopc_2.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);
+        Opc_3.setBackground(new Color(255,255,255));
+        lblopc_3.setFont(prinOpc);
+        lblopc_3.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras_B.png")), lbl_3, 0);
+        Opc_4.setBackground(new Color(255,255,255));
+        lblopc_4.setFont(prinOpc);
+        lblopc_4.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Calidad_B.png")), lbl_7, 0);
+        Opc_5.setBackground(new Color(255,255,255));
+        lblopc_5.setFont(prinOpc);
+        lblopc_5.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Inventory_B.png")), lbl_9, 0);
+        Opc_6.setBackground(new Color(161,29,152, 150));
+        lblopc_6.setFont(opc);
+        lblopc_6.setForeground(new Color(255,255,255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion.png")), lbl_11, 0);
+        
+        GestionUsuarios.setVisible(false);
+        AccesosRemotos.setVisible(false);
+        Muestras.setVisible(false);
+        Pruebas.setVisible(false);
+        Inventario.setVisible(false);
+        ProdDis.setVisible(true);
+        txtBuscar5.setText(" Buscar Usuario");
+        opc14.setFont(opc);
+        opc14.setForeground(new Color(0,0,0));
+        opc15.setFont(subT);
+        opc15.setForeground(new Color(105,99,135));
+        opc16.setFont(subT);
+        opc16.setForeground(new Color(105,99,135));
+        pnlOpc14.setVisible(true);
+        pnlOpc15.setVisible(false);
+        pnlOpc16.setVisible(false);
+        subirDatosPD.setVisible(true);
+        revisarDatosPD.setVisible(false);
+        txtNombreUsuPD.setFont(subT);
+        txtNombreUsuPD.setForeground(new Color(105,99,135));
+        txtNombreUsuPD.setText(nombreLogin);
+    }//GEN-LAST:event_Opc_6MouseClicked
+
+    private void opc14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc14MouseClicked
+        opc14.setFont(opc);
+        opc14.setForeground(new Color(0,0,0));
+        opc15.setFont(subT);
+        opc15.setForeground(new Color(105,99,135));
+        opc16.setFont(subT);
+        opc16.setForeground(new Color(105,99,135));
+        pnlOpc14.setVisible(true);
+        pnlOpc15.setVisible(false);
+        pnlOpc16.setVisible(false);
+        subirDatosPD.setVisible(true);
+        revisarDatosPD.setVisible(false);
+        txtNombreUsuPD.setText(nombreLogin);
+    }//GEN-LAST:event_opc14MouseClicked
+
+    private void opc15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc15MouseClicked
+        opc14.setFont(subT);
+        opc14.setForeground(new Color(105,99,135));
+        opc15.setFont(opc);
+        opc15.setForeground(new Color(0,0,0));
+        opc16.setFont(subT);
+        opc16.setForeground(new Color(105,99,135));
+        pnlOpc14.setVisible(false);
+        pnlOpc15.setVisible(true);
+        pnlOpc16.setVisible(false);
+        subirDatosPD.setVisible(false);
+        revisarDatosPD.setVisible(true);
+        ListarMonitoreo();
+    }//GEN-LAST:event_opc15MouseClicked
+
+    private void lblGuardarInfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardarInfMouseClicked
+        if(!txtDatosPD.getText().isEmpty())
+        {
+            if(lblGuardarInf.getText().equals("GUARDAR INFORME"))
+            {
+                String resp = CONTROLMONI.Insertar(CONTROL.getIDConcat(nombreLogin), fecha, txtDatosPD.getText());
+                OptionPane.showMessage("Guardar Informe", "Nuevo reporte de monitoreo de producción y distribución guardado con éxito en el registro", "/img/iconos/Info.png");
+
+                txtDatosPD.setText("");
+                ListarMonitoreo();
+            }
+            else
+                if(lblGuardarInf.getText().equals("MODIFICAR"))
+                {
+                    String resp = CONTROLMONI.Modificar(txtDatosPD.getText(), id);
+                    OptionPane.showMessage("Guardar Informe", "Reporte de monitoreo de producción y distribución modificado exitosamente", "/img/iconos/Info.png");                    
+                    
+                    txtDatosPD.setText("");
+                    lblGuardarInf.setText("GUARDAR INFORME");
+                    ListarMonitoreo();
+                    
+                    opc15.setFont(opc);
+                    opc15.setForeground(new Color(0,0,0));
+                    opc16.setFont(subT);
+                    opc16.setForeground(new Color(105,99,135));
+                    pnlOpc15.setVisible(true);
+                    pnlOpc16.setVisible(false);
+                    subirDatosPD.setVisible(false);
+                    revisarDatosPD.setVisible(true);
+                }
+        } 
+        else
+            OptionPane.showMessage("Guardar Informe", "Debe ingresar un reporte", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblGuardarInfMouseClicked
+
+    private void lblEliminar5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar5MouseClicked
+        if(tblMonitoreo.getSelectedRowCount() == 1)
+        {
+            id  = Integer.parseInt(String.valueOf(tblMonitoreo.getValueAt(tblMonitoreo.getSelectedRow(), 0)));
+            nombre = String.valueOf(tblMonitoreo.getValueAt(tblMonitoreo.getSelectedRow(), 1));
+            if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar el reporte guardado por el usuario " + nombre + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                String resp = CONTROLMONI.Eliminar(id);
+                if(resp.equals("OK"))
+                {
+                    OptionPane.showMessage("Eliminar", "Reporte de monitoreo eliminado con éxito", "/img/iconos/Info.png");
+                    ListarMonitoreo();
+                }
+                else
+                    OptionPane.showMessage("Eliminar", "Hubo un error al eliminar el reporte", "/img/iconos/Close.png");
+            }
+        }
+        else
+            OptionPane.showMessage("Eliminar", "Debe seleccionar un registro de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblEliminar5MouseClicked
+
+    private void lblModificar4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModificar4MouseClicked
+        if(tblMonitoreo.getSelectedRowCount() == 1)
+        {
+            opc14.setFont(subT);
+            opc14.setForeground(new Color(105,99,135));
+            opc15.setFont(subT);
+            opc15.setForeground(new Color(105,99,135));
+            opc16.setFont(opc);
+            opc16.setForeground(new Color(0,0,0));
+            pnlOpc14.setVisible(false);
+            pnlOpc15.setVisible(false);
+            pnlOpc16.setVisible(true);
+            subirDatosPD.setVisible(true);
+            revisarDatosPD.setVisible(false);            
+            
+            lblGuardarInf.setText("MODIFICAR");
+            
+            id = Integer.parseInt(String.valueOf(tblMonitoreo.getValueAt(tblMonitoreo.getSelectedRow(), 0)));            
+            txtNombreUsuPD.setText(String.valueOf(tblMonitoreo.getValueAt(tblMonitoreo.getSelectedRow(), 1)));
+            datosM = String.valueOf(tblMonitoreo.getValueAt(tblMonitoreo.getSelectedRow(), 4));
+            txtDatosPD.setText(datosM);
+        }
+        else
+            OptionPane.showMessage("Modificar", "Debe seleccionar un registro de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblModificar4MouseClicked
+
+    private void lblIconAct5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconAct5MouseClicked
+        ListarMonitoreo();
+    }//GEN-LAST:event_lblIconAct5MouseClicked
+
+    private void txtBuscar5FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar5FocusGained
+        if(txtBuscar5.getText().equals(" Buscar Usuario"))
+            txtBuscar5.setText("");
+    }//GEN-LAST:event_txtBuscar5FocusGained
+
+    private void txtBuscar5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar5FocusLost
+        if(txtBuscar5.getText().isEmpty())
+            txtBuscar5.setText(" Buscar Usuario");
+    }//GEN-LAST:event_txtBuscar5FocusLost
+
+    private void lbl_12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_12MouseClicked
+        if(!txtBuscar5.getText().isEmpty() && !txtBuscar5.getText().equals(" Buscar Usuario"))
+            if(CONTROL.existeConcat(txtBuscar5.getText()))             
+                tblMonitoreo.setModel(CONTROLMONI.Buscar(txtBuscar5.getText()));                     
+            else
+                OptionPane.showMessage("Buscar", "El usuario " + txtBuscar5.getText() + " no existe en el sistema", "/img/iconos/Close.png");                           
+        else
+            OptionPane.showMessage("Buscar", "Debe ingresar un nombre de usuario a buscar", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lbl_12MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1549,17 +3102,31 @@ public class Usuarios_A extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AccesosRemotos;
     private javax.swing.JPanel GestionUsuarios;
+    private javax.swing.JPanel Inventario;
     private javax.swing.JPanel Muestras;
     private javax.swing.JPanel Opc_1;
     private javax.swing.JPanel Opc_2;
     private javax.swing.JPanel Opc_3;
+    private javax.swing.JPanel Opc_4;
+    private javax.swing.JPanel Opc_5;
+    private javax.swing.JPanel Opc_6;
+    private javax.swing.JPanel ProdDis;
+    private javax.swing.JPanel Pruebas;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lbl1;
     private javax.swing.JLabel lbl10;
     private javax.swing.JLabel lbl11;
@@ -1568,8 +3135,23 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel lbl14;
     private javax.swing.JLabel lbl15;
     private javax.swing.JLabel lbl16;
+    private javax.swing.JLabel lbl17;
+    private javax.swing.JLabel lbl18;
+    private javax.swing.JLabel lbl19;
     private javax.swing.JLabel lbl2;
+    private javax.swing.JLabel lbl20;
+    private javax.swing.JLabel lbl21;
+    private javax.swing.JLabel lbl22;
+    private javax.swing.JLabel lbl23;
+    private javax.swing.JLabel lbl24;
+    private javax.swing.JLabel lbl25;
+    private javax.swing.JLabel lbl26;
+    private javax.swing.JLabel lbl27;
+    private javax.swing.JLabel lbl28;
+    private javax.swing.JLabel lbl29;
     private javax.swing.JLabel lbl3;
+    private javax.swing.JLabel lbl30;
+    private javax.swing.JLabel lbl33;
     private javax.swing.JLabel lbl4;
     private javax.swing.JLabel lbl5;
     private javax.swing.JLabel lbl6;
@@ -1580,57 +3162,118 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel lblEliminar;
     private javax.swing.JLabel lblEliminar1;
     private javax.swing.JLabel lblEliminar2;
+    private javax.swing.JLabel lblEliminar3;
+    private javax.swing.JLabel lblEliminar4;
+    private javax.swing.JLabel lblEliminar5;
+    private javax.swing.JLabel lblGuardarInf;
     private javax.swing.JLabel lblIconAct;
     private javax.swing.JLabel lblIconAct1;
     private javax.swing.JLabel lblIconAct2;
+    private javax.swing.JLabel lblIconAct3;
+    private javax.swing.JLabel lblIconAct4;
+    private javax.swing.JLabel lblIconAct5;
     private javax.swing.JLabel lblIniSes;
     private javax.swing.JLabel lblModificar;
     private javax.swing.JLabel lblModificar1;
+    private javax.swing.JLabel lblModificar2;
+    private javax.swing.JLabel lblModificar3;
+    private javax.swing.JLabel lblModificar4;
+    private javax.swing.JLabel lblRegInv;
     private javax.swing.JLabel lblRegMuestra;
+    private javax.swing.JLabel lblRegPrueba;
     private javax.swing.JLabel lblSee;
     private javax.swing.JLabel lbl_1;
+    private javax.swing.JLabel lbl_10;
+    private javax.swing.JLabel lbl_11;
+    private javax.swing.JLabel lbl_12;
     private javax.swing.JLabel lbl_2;
     private javax.swing.JLabel lbl_3;
     private javax.swing.JLabel lbl_4;
     private javax.swing.JLabel lbl_5;
     private javax.swing.JLabel lbl_6;
+    private javax.swing.JLabel lbl_7;
+    private javax.swing.JLabel lbl_8;
+    private javax.swing.JLabel lbl_9;
     private javax.swing.JLabel lblopc_1;
     private javax.swing.JLabel lblopc_2;
     private javax.swing.JLabel lblopc_3;
+    private javax.swing.JLabel lblopc_4;
+    private javax.swing.JLabel lblopc_5;
+    private javax.swing.JLabel lblopc_6;
     private javax.swing.JLabel opc1;
+    private javax.swing.JLabel opc10;
+    private javax.swing.JLabel opc11;
+    private javax.swing.JLabel opc12;
+    private javax.swing.JLabel opc13;
+    private javax.swing.JLabel opc14;
+    private javax.swing.JLabel opc15;
+    private javax.swing.JLabel opc16;
     private javax.swing.JLabel opc2;
     private javax.swing.JLabel opc3;
     private javax.swing.JLabel opc4;
     private javax.swing.JLabel opc5;
     private javax.swing.JLabel opc6;
     private javax.swing.JLabel opc7;
+    private javax.swing.JLabel opc8;
+    private javax.swing.JLabel opc9;
     private javax.swing.JPanel pnlOpc1;
+    private javax.swing.JPanel pnlOpc10;
+    private javax.swing.JPanel pnlOpc11;
+    private javax.swing.JPanel pnlOpc12;
+    private javax.swing.JPanel pnlOpc13;
+    private javax.swing.JPanel pnlOpc14;
+    private javax.swing.JPanel pnlOpc15;
+    private javax.swing.JPanel pnlOpc16;
     private javax.swing.JPanel pnlOpc2;
     private javax.swing.JPanel pnlOpc3;
     private javax.swing.JPanel pnlOpc4;
     private javax.swing.JPanel pnlOpc5;
     private javax.swing.JPanel pnlOpc6;
     private javax.swing.JPanel pnlOpc7;
+    private javax.swing.JPanel pnlOpc8;
+    private javax.swing.JPanel pnlOpc9;
     private javax.swing.JPanel revisarDatos;
     private javax.swing.JPanel revisarDatos1;
+    private javax.swing.JPanel revisarDatosI;
     private javax.swing.JPanel revisarDatosM;
+    private javax.swing.JPanel revisarDatosP;
+    private javax.swing.JPanel revisarDatosPD;
     private javax.swing.JPanel subirDatos;
+    private javax.swing.JPanel subirDatosI;
     private javax.swing.JPanel subirDatosM;
+    private javax.swing.JPanel subirDatosP;
+    private javax.swing.JPanel subirDatosPD;
     private rojeru_san.complementos.RSTableMetro tblAccesos;
+    private rojeru_san.complementos.RSTableMetro tblInventario;
+    private rojeru_san.complementos.RSTableMetro tblMonitoreo;
     private rojeru_san.complementos.RSTableMetro tblMuestras;
+    private rojeru_san.complementos.RSTableMetro tblPruebas;
     private rojeru_san.complementos.RSTableMetro tblUsuarios;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtBuscar1;
     private javax.swing.JTextField txtBuscar2;
+    private javax.swing.JTextField txtBuscar3;
+    private javax.swing.JTextField txtBuscar4;
+    private javax.swing.JTextField txtBuscar5;
+    private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtComponente;
     private javax.swing.JTextField txtContaminacion;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextArea txtDatos;
+    private javax.swing.JTextArea txtDatosI;
+    private javax.swing.JTextArea txtDatosPD;
+    private javax.swing.JTextField txtIDMuestra;
+    private javax.swing.JLabel txtIDMuestraM;
     private javax.swing.JTextField txtMg;
+    private javax.swing.JTextField txtNomInventario;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JLabel txtNombreUsu;
+    private javax.swing.JLabel txtNombreUsuI;
+    private javax.swing.JLabel txtNombreUsuP;
+    private javax.swing.JLabel txtNombreUsuPD;
+    private javax.swing.JTextField txtResultado;
     private javax.swing.JTextField txtRol;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,8 +35,8 @@ public class muestrasControl
             registro[1] = DATOSUSU.nombre(item.getId_usuario()) + " " + DATOSUSU.apellido(item.getId_usuario());
             registro[2] = item.getFecha();
             registro[3] = item.getHora();
-            registro[4] = item.isComponente_extraño() ? "Sí" : "No";
-            registro[5] = item.isContaminacion_cruzada() ? "Sí" : "No";
+            registro[4] = item.isComponente_extraño() ? "Si" : "No";
+            registro[5] = item.isContaminacion_cruzada() ? "Si" : "No";
             registro[6] = String.valueOf(item.getMg());
             registro[7] = item.getDatos();
             modeloTabla.addRow(registro);
@@ -58,8 +58,8 @@ public class muestrasControl
             registro[1] = DATOSUSU.nombre(item.getId_usuario()) + " " + DATOSUSU.apellido(item.getId_usuario());
             registro[2] = item.getFecha();
             registro[3] = item.getHora();
-            registro[4] = item.isComponente_extraño() ? "Sí" : "No";
-            registro[5] = item.isContaminacion_cruzada() ? "Sí" : "No";
+            registro[4] = item.isComponente_extraño() ? "Si" : "No";
+            registro[5] = item.isContaminacion_cruzada() ? "Si" : "No";
             registro[6] = String.valueOf(item.getMg());
             registro[7] = item.getDatos();
             modeloTabla.addRow(registro);
@@ -94,5 +94,23 @@ public class muestrasControl
             return "OK";
         else
             return "Error en la actualización";
+    }
+    
+    public String Eliminar(int id)
+    {
+        if(DATOS.eliminar(id))
+            return "OK";
+        else
+            return "No fue posible eliminar la muestra";
+    }
+    
+    public boolean Existe(int idMuestra, String fecha)
+    {
+        return DATOS.existe(idMuestra, fecha);
+    }
+    
+    public String getFecha(int id)
+    {
+        return DATOS.fecha(id);
     }
 }

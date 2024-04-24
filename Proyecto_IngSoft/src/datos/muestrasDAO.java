@@ -117,16 +117,16 @@ public class muestrasDAO implements CrudMuestras<datos_muestras>
     }
     
     @Override
-    public boolean existe(int id_usuario, String fecha)
+    public boolean existe(int id_muestra, String fecha)
     {
         String sql;
         resp = false;
         try
         {
-            sql = "select id_muestra from datos_muestras where id_usuario = ? and date(fecha_ingreso) = ?;";
+            sql = "select * from datos_muestras where id_muestra = ? and date(fecha_ingreso) = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             
-            ps.setInt(1, id_usuario);
+            ps.setInt(1, id_muestra);
             ps.setString(2, fecha);
             
             rs = ps.executeQuery();
@@ -180,5 +180,59 @@ public class muestrasDAO implements CrudMuestras<datos_muestras>
             CON.Desconectar();
         }
         return resp;
-    }    
+    }  
+    
+    @Override
+    public boolean eliminar(int id)
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "delete from datos_muestras where id_muestra = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            if(ps.executeUpdate() > 0)
+                resp = true;
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            CON.Desconectar();
+        }
+        return resp;
+    }
+    
+    public String fecha(int id)
+    {
+        String fecha = "";
+        String sql;
+        try
+        {
+            sql = "select DATE(fecha_ingreso) from datos_muestras where id_muestra = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setInt(1, id);            
+            rs = ps.executeQuery();
+            if(rs.next())
+                fecha = rs.getString(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.Desconectar();
+        }
+        return fecha;
+    }
 }
