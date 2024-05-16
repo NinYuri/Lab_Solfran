@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import negocio.accesosControl;
+import negocio.auditoriasControl;
 import negocio.inventarioControl;
 import negocio.monitoreoControl;
 import negocio.muestrasControl;
@@ -32,6 +33,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private final pruebasControl CONTROLPRUEBAS;
     private final inventarioControl CONTROLINV;
     private final monitoreoControl CONTROLMONI;
+    private final auditoriasControl CONTROLAUDI;
     Font subT = new Font("Roboto", Font.PLAIN, 20);
     Font opc = new Font("Roboto", Font.BOLD, 20);
     Font prinOpc = new Font("Roboto", Font.PLAIN, 17);
@@ -63,6 +65,7 @@ public class Usuarios_A extends javax.swing.JFrame
         CONTROLPRUEBAS = new pruebasControl();
         CONTROLINV = new inventarioControl();
         CONTROLMONI = new monitoreoControl();
+        CONTROLAUDI= new auditoriasControl();
         Listar();
         
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct, 20);
@@ -71,12 +74,14 @@ public class Usuarios_A extends javax.swing.JFrame
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct3, 20);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct4, 20);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct5, 20);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct6, 20);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_4, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_5, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_6, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_8, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_10, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_12, 0);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Lupa.png")), lbl_14, 0);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/User.png")), lbl_1, 0);        
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);        
         Opc_2.setBackground(new Color(255, 255, 255));
@@ -93,6 +98,9 @@ public class Usuarios_A extends javax.swing.JFrame
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
         Opc_6.setBackground(new Color(255, 255, 255));
         ProdDis.setVisible(false);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Auditor_B.png")), lbl_13, 0);
+        Opc_7.setBackground(new Color(255, 255, 255));
+        Auditorias.setVisible(false);
         
         nombreLogin = "";
     }
@@ -133,6 +141,11 @@ public class Usuarios_A extends javax.swing.JFrame
         tblMonitoreo.setModel(CONTROLMONI.Listar());
     }
     
+    public void ListarAuditorias()
+    {
+        tblAccesos1.setModel(CONTROLAUDI.Listar());
+    }
+    
     public void Tipografia() 
     {        
         lbl1.setFont(subT);
@@ -141,12 +154,14 @@ public class Usuarios_A extends javax.swing.JFrame
         lbl17.setFont(subT);
         lbl19.setFont(subT);
         lbl26.setFont(subT);
+        lbl32.setFont(subT);
         opc1.setFont(opc);
         opc4.setFont(opc);
         opc5.setFont(opc);
         opc8.setFont(opc);
         opc11.setFont(opc);
         opc14.setFont(opc);
+        opc17.setFont(opc);
         opc2.setFont(subT);
         opc3.setFont(subT);
         opc6.setFont(subT);
@@ -163,6 +178,7 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_4.setFont(prinOpc);
         lblopc_5.setFont(prinOpc);
         lblopc_6.setFont(prinOpc);
+        lblopc_7.setFont(prinOpc);
     }
     
     private boolean valTexto(String texto)
@@ -229,6 +245,9 @@ public class Usuarios_A extends javax.swing.JFrame
         Opc_6 = new RoundedPanel(20);
         lbl_11 = new javax.swing.JLabel();
         lblopc_6 = new javax.swing.JLabel();
+        Opc_7 = new RoundedPanel(20);
+        lbl_13 = new javax.swing.JLabel();
+        lblopc_7 = new javax.swing.JLabel();
         GestionUsuarios = new javax.swing.JPanel();
         lbl1 = new javax.swing.JLabel();
         lbl2 = new javax.swing.JLabel();
@@ -386,6 +405,19 @@ public class Usuarios_A extends javax.swing.JFrame
         lblIconAct5 = new javax.swing.JLabel();
         txtBuscar5 = new javax.swing.JTextField();
         lbl_12 = new javax.swing.JLabel();
+        Auditorias = new javax.swing.JPanel();
+        lbl31 = new javax.swing.JLabel();
+        lbl32 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        pnlOpc17 = new javax.swing.JPanel();
+        opc17 = new javax.swing.JLabel();
+        revisarDatos2 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tblAccesos1 = new rojeru_san.complementos.RSTableMetro();
+        lblEliminar6 = new javax.swing.JLabel();
+        lblIconAct6 = new javax.swing.JLabel();
+        txtBuscar6 = new javax.swing.JTextField();
+        lbl_14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -498,6 +530,24 @@ public class Usuarios_A extends javax.swing.JFrame
         Opc_6.add(lblopc_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 260, -1));
 
         getContentPane().add(Opc_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 320, 40));
+
+        Opc_7.setBackground(new java.awt.Color(161,29,152, 150));
+        Opc_7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Opc_7MouseClicked(evt);
+            }
+        });
+        Opc_7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Opc_7.add(lbl_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, 30, 30));
+
+        lblopc_7.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lblopc_7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblopc_7.setText("Auditorías");
+        lblopc_7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Opc_7.add(lblopc_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 8, 260, -1));
+
+        getContentPane().add(Opc_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 320, 40));
 
         GestionUsuarios.setBackground(new java.awt.Color(255, 255, 255));
         GestionUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1718,6 +1768,111 @@ public class Usuarios_A extends javax.swing.JFrame
 
         getContentPane().add(ProdDis, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1100, 850));
 
+        Auditorias.setBackground(new java.awt.Color(255, 255, 255));
+        Auditorias.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl31.setFont(new java.awt.Font("Roboto Black", 1, 42)); // NOI18N
+        lbl31.setForeground(new java.awt.Color(161, 29, 152));
+        lbl31.setText("Auditorías");
+        Auditorias.add(lbl31, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        lbl32.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        lbl32.setForeground(new java.awt.Color(105, 99, 135));
+        lbl32.setText("Controla y organiza los resultados de las auditorías de manera segura y eficiente");
+        Auditorias.add(lbl32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1080, -1));
+
+        jPanel9.setBackground(new java.awt.Color(72, 149, 239));
+        Auditorias.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 900, 2));
+
+        pnlOpc17.setBackground(new java.awt.Color(72, 149, 239));
+        Auditorias.add(pnlOpc17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 155, 190, 7));
+
+        opc17.setFont(new java.awt.Font("Roboto Black", 1, 20)); // NOI18N
+        opc17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        opc17.setText("Revisar Registros");
+        opc17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Auditorias.add(opc17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 126, 190, -1));
+
+        revisarDatos2.setBackground(new java.awt.Color(255, 255, 255));
+        revisarDatos2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tblAccesos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblAccesos1.setColorBackgoundHead(new java.awt.Color(20, 89, 169));
+        tblAccesos1.setColorFilasBackgound2(new java.awt.Color(72, 149, 239));
+        tblAccesos1.setColorFilasForeground1(new java.awt.Color(0, 0, 0));
+        tblAccesos1.setColorFilasForeground2(new java.awt.Color(255, 255, 255));
+        tblAccesos1.setFuenteFilas(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        tblAccesos1.setFuenteFilasSelect(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        tblAccesos1.setFuenteHead(new java.awt.Font("Roboto Black", 0, 13)); // NOI18N
+        tblAccesos1.setRowHeight(25);
+        jScrollPane10.setViewportView(tblAccesos1);
+
+        revisarDatos2.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 860, 480));
+
+        lblEliminar6.setBackground(new java.awt.Color(20, 89, 169));
+        lblEliminar6.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblEliminar6.setForeground(new java.awt.Color(255, 255, 255));
+        lblEliminar6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEliminar6.setText("ELIMINAR");
+        lblEliminar6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblEliminar6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEliminar6.setOpaque(true);
+        lblEliminar6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEliminar6MouseClicked(evt);
+            }
+        });
+        revisarDatos2.add(lblEliminar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 540, 280, 55));
+
+        lblIconAct6.setBackground(new java.awt.Color(20, 89, 169));
+        lblIconAct6.setFont(new java.awt.Font("Roboto Black", 1, 24)); // NOI18N
+        lblIconAct6.setForeground(new java.awt.Color(255, 255, 255));
+        lblIconAct6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIconAct6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        lblIconAct6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIconAct6.setOpaque(true);
+        lblIconAct6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIconAct6MouseClicked(evt);
+            }
+        });
+        revisarDatos2.add(lblIconAct6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 70, 55));
+
+        Auditorias.add(revisarDatos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 910, 640));
+
+        txtBuscar6.setFont(new java.awt.Font("Roboto Black", 1, 19)); // NOI18N
+        txtBuscar6.setText(" Buscar Usuario");
+        txtBuscar6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtBuscar6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscar6FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscar6FocusLost(evt);
+            }
+        });
+        Auditorias.add(txtBuscar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 123, 190, 30));
+
+        lbl_14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_14MouseClicked(evt);
+            }
+        });
+        Auditorias.add(lbl_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 125, 30, 25));
+
+        getContentPane().add(Auditorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 1100, 850));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1960,6 +2115,10 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_6.setFont(prinOpc);
         lblopc_6.setForeground(new Color(0,0,0));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        Opc_7.setBackground(new Color(255,255,255));
+        lblopc_7.setFont(prinOpc);
+        lblopc_7.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Auditor_B.png")), lbl_13, 0);
         
         GestionUsuarios.setVisible(true);
         opc1.setFont(opc);
@@ -1984,6 +2143,7 @@ public class Usuarios_A extends javax.swing.JFrame
         Pruebas.setVisible(false);
         Inventario.setVisible(false);
         ProdDis.setVisible(false);
+        Auditorias.setVisible(false);
     }//GEN-LAST:event_Opc_1MouseClicked
 
     private void Opc_2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Opc_2MouseClicked
@@ -2011,6 +2171,10 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_6.setFont(prinOpc);
         lblopc_6.setForeground(new Color(0,0,0));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        Opc_7.setBackground(new Color(255,255,255));
+        lblopc_7.setFont(prinOpc);
+        lblopc_7.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Auditor_B.png")), lbl_13, 0);
         
         GestionUsuarios.setVisible(false);
         AccesosRemotos.setVisible(true);
@@ -2020,6 +2184,7 @@ public class Usuarios_A extends javax.swing.JFrame
         Pruebas.setVisible(false);
         Inventario.setVisible(false);
         ProdDis.setVisible(false);
+        Auditorias.setVisible(false);
     }//GEN-LAST:event_Opc_2MouseClicked
 
     private void lblEliminar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar1MouseClicked
@@ -2112,6 +2277,10 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_6.setFont(prinOpc);
         lblopc_6.setForeground(new Color(0,0,0));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        Opc_7.setBackground(new Color(255,255,255));
+        lblopc_7.setFont(prinOpc);
+        lblopc_7.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Auditor_B.png")), lbl_13, 0);
         
         GestionUsuarios.setVisible(false);
         AccesosRemotos.setVisible(false);
@@ -2134,6 +2303,7 @@ public class Usuarios_A extends javax.swing.JFrame
         Pruebas.setVisible(false);
         Inventario.setVisible(false);
         ProdDis.setVisible(false);
+        Auditorias.setVisible(false);
     }//GEN-LAST:event_Opc_3MouseClicked
 
     private void opc5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc5MouseClicked
@@ -2346,6 +2516,10 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_6.setFont(prinOpc);
         lblopc_6.setForeground(new Color(0,0,0));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        Opc_7.setBackground(new Color(255,255,255));
+        lblopc_7.setFont(prinOpc);
+        lblopc_7.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Auditor_B.png")), lbl_13, 0);
         
         GestionUsuarios.setVisible(false);
         AccesosRemotos.setVisible(false);
@@ -2369,6 +2543,7 @@ public class Usuarios_A extends javax.swing.JFrame
         txtIDMuestraM.setVisible(false);
         Inventario.setVisible(false);
         ProdDis.setVisible(false);
+        Auditorias.setVisible(false);
     }//GEN-LAST:event_Opc_4MouseClicked
 
     private void opc8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc8MouseClicked
@@ -2558,6 +2733,10 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_6.setFont(prinOpc);
         lblopc_6.setForeground(new Color(0,0,0));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        Opc_7.setBackground(new Color(255,255,255));
+        lblopc_7.setFont(prinOpc);
+        lblopc_7.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Auditor_B.png")), lbl_13, 0);
         
         GestionUsuarios.setVisible(false);
         AccesosRemotos.setVisible(false);
@@ -2580,6 +2759,7 @@ public class Usuarios_A extends javax.swing.JFrame
         txtNombreUsuI.setForeground(new Color(105,99,135));
         txtNombreUsuI.setText(nombreLogin);    
         ProdDis.setVisible(false);
+        Auditorias.setVisible(false);
     }//GEN-LAST:event_Opc_5MouseClicked
 
     private void opc11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc11MouseClicked
@@ -2757,6 +2937,10 @@ public class Usuarios_A extends javax.swing.JFrame
         lblopc_6.setFont(opc);
         lblopc_6.setForeground(new Color(255,255,255));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion.png")), lbl_11, 0);
+        Opc_7.setBackground(new Color(255,255,255));
+        lblopc_7.setFont(prinOpc);
+        lblopc_7.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Auditor_B.png")), lbl_13, 0);
         
         GestionUsuarios.setVisible(false);
         AccesosRemotos.setVisible(false);
@@ -2779,6 +2963,7 @@ public class Usuarios_A extends javax.swing.JFrame
         txtNombreUsuPD.setFont(subT);
         txtNombreUsuPD.setForeground(new Color(105,99,135));
         txtNombreUsuPD.setText(nombreLogin);
+        Auditorias.setVisible(false);
     }//GEN-LAST:event_Opc_6MouseClicked
 
     private void opc14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opc14MouseClicked
@@ -2916,6 +3101,92 @@ public class Usuarios_A extends javax.swing.JFrame
         else
             OptionPane.showMessage("Buscar", "Debe ingresar un nombre de usuario a buscar", "/img/iconos/Close.png");
     }//GEN-LAST:event_lbl_12MouseClicked
+
+    private void Opc_7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Opc_7MouseClicked
+        Opc_1.setBackground(new Color(255,255,255));
+        lblopc_1.setFont(prinOpc);
+        lblopc_1.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/User_B.png")), lbl_1, 0);
+        Opc_2.setBackground(new Color(255,255,255));
+        lblopc_2.setFont(prinOpc);
+        lblopc_2.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Remote_B.png")), lbl_2, 0);
+        Opc_3.setBackground(new Color(255,255,255));
+        lblopc_3.setFont(prinOpc);
+        lblopc_3.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Muestras_B.png")), lbl_3, 0);
+        Opc_4.setBackground(new Color(255,255,255));
+        lblopc_4.setFont(prinOpc);
+        lblopc_4.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Calidad_B.png")), lbl_7, 0);
+        Opc_5.setBackground(new Color(255,255,255));
+        lblopc_5.setFont(prinOpc);
+        lblopc_5.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Inventory_B.png")), lbl_9, 0);
+        Opc_6.setBackground(new Color(255,255,255));
+        lblopc_6.setFont(prinOpc);
+        lblopc_6.setForeground(new Color(0,0,0));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Produccion_B.png")), lbl_11, 0);
+        Opc_7.setBackground(new Color(161,29,152, 150));
+        lblopc_7.setFont(opc);
+        lblopc_7.setForeground(new Color(255,255,255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Auditor.png")), lbl_13, 0);
+        
+        GestionUsuarios.setVisible(false);
+        AccesosRemotos.setVisible(false);        
+        Muestras.setVisible(false);
+        Pruebas.setVisible(false);
+        Inventario.setVisible(false);
+        ProdDis.setVisible(false);
+        Auditorias.setVisible(true);
+        ListarAuditorias();
+        txtBuscar6.setText(" Buscar Usuario");
+    }//GEN-LAST:event_Opc_7MouseClicked
+
+    private void lblEliminar6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEliminar6MouseClicked
+        if(tblAccesos1.getSelectedRowCount() == 1)
+        {
+            id  = Integer.parseInt(String.valueOf(tblAccesos1.getValueAt(tblAccesos1.getSelectedRow(), 0)));
+            nombre = String.valueOf(tblAccesos1.getValueAt(tblAccesos1.getSelectedRow(), 1));
+            if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar la auditoría realizada por el usuario " + nombre + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                String resp = CONTROLAUDI.Eliminar(id);
+                if(resp.equals("OK"))
+                {
+                    OptionPane.showMessage("Eliminar", "Auditoría eliminada con éxito", "/img/iconos/Info.png");
+                    ListarAuditorias();
+                }
+                else
+                    OptionPane.showMessage("Eliminar", "Hubo un error al eliminar la auditoría", "/img/iconos/Close.png");
+            }
+        }
+        else
+            OptionPane.showMessage("Eliminar", "Debe seleccionar una auditoría de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lblEliminar6MouseClicked
+
+    private void lblIconAct6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconAct6MouseClicked
+        ListarAuditorias();
+    }//GEN-LAST:event_lblIconAct6MouseClicked
+
+    private void txtBuscar6FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar6FocusGained
+        if(txtBuscar6.getText().equals(" Buscar Usuario"))
+            txtBuscar6.setText("");
+    }//GEN-LAST:event_txtBuscar6FocusGained
+
+    private void txtBuscar6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscar6FocusLost
+        if(txtBuscar6.getText().isEmpty())
+            txtBuscar6.setText(" Buscar Usuario");
+    }//GEN-LAST:event_txtBuscar6FocusLost
+
+    private void lbl_14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_14MouseClicked
+        if(!txtBuscar6.getText().isEmpty() && !txtBuscar6.getText().equals(" Buscar Usuario"))
+            if(CONTROL.existeConcat(txtBuscar6.getText()))             
+                tblAccesos1.setModel(CONTROLAUDI.Buscar(txtBuscar6.getText()));                     
+            else
+                OptionPane.showMessage("Buscar", "El usuario " + txtBuscar6.getText() + " no existe en el sistema", "/img/iconos/Close.png");                           
+        else
+            OptionPane.showMessage("Buscar", "Debe ingresar un nombre de usuario a buscar", "/img/iconos/Close.png");
+    }//GEN-LAST:event_lbl_14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -3101,6 +3372,7 @@ public class Usuarios_A extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AccesosRemotos;
+    private javax.swing.JPanel Auditorias;
     private javax.swing.JPanel GestionUsuarios;
     private javax.swing.JPanel Inventario;
     private javax.swing.JPanel Muestras;
@@ -3110,6 +3382,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JPanel Opc_4;
     private javax.swing.JPanel Opc_5;
     private javax.swing.JPanel Opc_6;
+    private javax.swing.JPanel Opc_7;
     private javax.swing.JPanel ProdDis;
     private javax.swing.JPanel Pruebas;
     private javax.swing.JPanel jPanel3;
@@ -3118,7 +3391,9 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3151,6 +3426,8 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel lbl29;
     private javax.swing.JLabel lbl3;
     private javax.swing.JLabel lbl30;
+    private javax.swing.JLabel lbl31;
+    private javax.swing.JLabel lbl32;
     private javax.swing.JLabel lbl33;
     private javax.swing.JLabel lbl4;
     private javax.swing.JLabel lbl5;
@@ -3165,6 +3442,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel lblEliminar3;
     private javax.swing.JLabel lblEliminar4;
     private javax.swing.JLabel lblEliminar5;
+    private javax.swing.JLabel lblEliminar6;
     private javax.swing.JLabel lblGuardarInf;
     private javax.swing.JLabel lblIconAct;
     private javax.swing.JLabel lblIconAct1;
@@ -3172,6 +3450,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel lblIconAct3;
     private javax.swing.JLabel lblIconAct4;
     private javax.swing.JLabel lblIconAct5;
+    private javax.swing.JLabel lblIconAct6;
     private javax.swing.JLabel lblIniSes;
     private javax.swing.JLabel lblModificar;
     private javax.swing.JLabel lblModificar1;
@@ -3186,6 +3465,8 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel lbl_10;
     private javax.swing.JLabel lbl_11;
     private javax.swing.JLabel lbl_12;
+    private javax.swing.JLabel lbl_13;
+    private javax.swing.JLabel lbl_14;
     private javax.swing.JLabel lbl_2;
     private javax.swing.JLabel lbl_3;
     private javax.swing.JLabel lbl_4;
@@ -3200,6 +3481,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel lblopc_4;
     private javax.swing.JLabel lblopc_5;
     private javax.swing.JLabel lblopc_6;
+    private javax.swing.JLabel lblopc_7;
     private javax.swing.JLabel opc1;
     private javax.swing.JLabel opc10;
     private javax.swing.JLabel opc11;
@@ -3208,6 +3490,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JLabel opc14;
     private javax.swing.JLabel opc15;
     private javax.swing.JLabel opc16;
+    private javax.swing.JLabel opc17;
     private javax.swing.JLabel opc2;
     private javax.swing.JLabel opc3;
     private javax.swing.JLabel opc4;
@@ -3224,6 +3507,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JPanel pnlOpc14;
     private javax.swing.JPanel pnlOpc15;
     private javax.swing.JPanel pnlOpc16;
+    private javax.swing.JPanel pnlOpc17;
     private javax.swing.JPanel pnlOpc2;
     private javax.swing.JPanel pnlOpc3;
     private javax.swing.JPanel pnlOpc4;
@@ -3234,6 +3518,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JPanel pnlOpc9;
     private javax.swing.JPanel revisarDatos;
     private javax.swing.JPanel revisarDatos1;
+    private javax.swing.JPanel revisarDatos2;
     private javax.swing.JPanel revisarDatosI;
     private javax.swing.JPanel revisarDatosM;
     private javax.swing.JPanel revisarDatosP;
@@ -3244,6 +3529,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JPanel subirDatosP;
     private javax.swing.JPanel subirDatosPD;
     private rojeru_san.complementos.RSTableMetro tblAccesos;
+    private rojeru_san.complementos.RSTableMetro tblAccesos1;
     private rojeru_san.complementos.RSTableMetro tblInventario;
     private rojeru_san.complementos.RSTableMetro tblMonitoreo;
     private rojeru_san.complementos.RSTableMetro tblMuestras;
@@ -3256,6 +3542,7 @@ public class Usuarios_A extends javax.swing.JFrame
     private javax.swing.JTextField txtBuscar3;
     private javax.swing.JTextField txtBuscar4;
     private javax.swing.JTextField txtBuscar5;
+    private javax.swing.JTextField txtBuscar6;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtComponente;
     private javax.swing.JTextField txtContaminacion;

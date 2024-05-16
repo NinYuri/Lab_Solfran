@@ -5,6 +5,8 @@ public class auditorias
     private int id_auditoria;
     private int id_usuario;
     private String fecha_auditoria;
+    private String fecha;
+    private String hora;
     private String hallazgos;
     private int porcentaje_conformidad;
     private String acciones_correctivas;
@@ -18,7 +20,18 @@ public class auditorias
         this.porcentaje_conformidad = porcentaje_conformidad;
         this.acciones_correctivas = acciones_correctivas;
         this.informe = informe;
-    }    
+    }  
+
+    public auditorias(int id_auditoria, int id_usuario, String fecha, String hora, String hallazgos, int porcentaje_conformidad, String acciones_correctivas, String informe) {
+        this.id_auditoria = id_auditoria;
+        this.id_usuario = id_usuario;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.hallazgos = hallazgos;
+        this.porcentaje_conformidad = porcentaje_conformidad;
+        this.acciones_correctivas = acciones_correctivas;
+        this.informe = informe;
+    }
 
     public auditorias() {
     }
@@ -47,6 +60,22 @@ public class auditorias
         this.fecha_auditoria = fecha_auditoria;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+    
     public String getHallazgos() {
         return hallazgos;
     }
